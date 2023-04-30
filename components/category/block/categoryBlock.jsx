@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { View, Text, FlatList } from 'react-native';
 
+import { scale, verticalScale } from '../../../sizeUtils';
 import CategoryCard from '../card/categoryCard';
 import styles from './categoryBlock.style';
 
@@ -44,7 +45,7 @@ const CategoryBlock = () => {
                     />
                 )}
                 keyExtractor={item => item?.categoryId}
-                contentContainerStyle={{columnGap: 24, marginVertical: 40}}
+                contentContainerStyle={{columnGap: scale(24), marginVertical: verticalScale(50)}}
                 horizontal
             />
         </View>

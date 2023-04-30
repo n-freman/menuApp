@@ -1,24 +1,25 @@
 import { StyleSheet } from "react-native";
 
+import { scale, verticalScale } from '../../../sizeUtils';
 import { COLORS } from "../../../constants";
 
 const styles = StyleSheet.create({
     menuButtonImage: {
-        width: 25,
-        height: 25,
+        width: scale(25),
+        height: scale(25),
     }, 
     menuButton: {
-        width: 60,
-        height: 60,
+        width: scale(60),
+        height: verticalScale(60),
         backgroundColor: COLORS.darkGreen,
         color: "#FFFFFF",
         fontSize: 500,
         justifyContent: "center",
         alignItems: "center",
-        borderRadius: 15,
-        marginTop: 31,
-        marginLeft: 32,
-        marginRight: 28,
+        borderRadius: scale(15),
+        marginTop: verticalScale(31),
+        marginLeft: scale(32),
+        marginRight: scale(28),
       },
 })
 

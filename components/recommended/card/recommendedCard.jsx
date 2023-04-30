@@ -1,15 +1,28 @@
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, Image } from "react-native";
 
-import styles from "../block/recommendedBlock.style";
+import styles from "./recommendedCard.style";
 
-const  RecommmendedBlock = () => {
+const RecommendedCard = ({ item }) => {
     return (
         <TouchableOpacity
-            style={styles.recommendedBlock}
+            style={styles.recommendedCard}
         >
-
+            <Image
+                style={styles.recommendedImage}
+                source={item.imageUrl}
+            />
+            <Text
+                style={styles.recommendedText}
+            >
+                {item.title}
+            </Text>
+            <Text
+                style={styles.recommendedText}
+            >
+                {item.price} TMT
+            </Text>
         </TouchableOpacity>
     );
 }
 
-export default RecommmendedBlock;
+export default RecommendedCard;

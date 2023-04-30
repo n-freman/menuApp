@@ -1,30 +1,31 @@
 import { StyleSheet } from "react-native";
 
+import { scale, verticalScale } from '../../../sizeUtils';
 import { COLORS } from '../../../constants';
 
 const styles = StyleSheet.create({
     categoryCard: {
-        height: 270,
-        width: 216,
+        height: verticalScale(270),
+        width: scale(216),
         borderColor: COLORS.lightGreen,
-        borderWidth: 1,
-        borderRadius: 30,
-        padding: 10,
-        paddingBottom: 43,
+        borderWidth: scale(1),
+        borderRadius: scale(30),
+        padding: scale(10),
+        paddingBottom: verticalScale(43),
         alignContent: "center"
     },
     categoryImage: {
-        width: 194,
-        height: 178,
-        borderRadius: 30,
-        marginBottom: 10,
+        width: scale(195),
+        height: verticalScale(178),
+        borderRadius: scale(30),
+        marginBottom: scale(10),
         backgroundColor: COLORS.lightGreen
     },
     categoryTitle: {
         fontFamily: "BarlowRegular",
         color: "#FCFFFC",
-        fontSize: 18,
-        lineHeight: 28.8
+        fontSize: scale(24),
+        lineHeight: scale(28.8)
     }
 })
 

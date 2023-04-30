@@ -1,17 +1,17 @@
 import { StyleSheet } from "react-native";
 import { Dimensions } from 'react-native';
 
-const { width, fontScale } = Dimensions.get("window");
+import { scale, verticalScale } from '../../../sizeUtils';
 
 const styles = StyleSheet.create({
     categoryBlock: {
-        marginLeft: 52,
-        marginTop: 42,
+        marginLeft: scale(52),
+        marginTop: verticalScale(42),
     },
     categoryTitle: {
         fontFamily: "BarlowBold",
-        fontSize: 40,
-        lineHeight: 48,
+        fontSize: scale(40),
+        lineHeight: verticalScale(48),
         color: "#FFFFFF"
     }
 })

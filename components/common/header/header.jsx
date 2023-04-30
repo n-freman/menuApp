@@ -10,7 +10,7 @@ const Header = (props) => {
             <Stack.Screen
             options={{
                 headerStyle: styles.header,
-                headerShadowVisible: true,
+                headerShadowVisible: false,
                 headerTitle: () => (
                     <Text>Bellini</Text>
                 ),

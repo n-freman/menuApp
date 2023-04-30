@@ -1,14 +1,17 @@
 import { StyleSheet } from 'react-native';
 
+import { scale, verticalScale } from '../../../sizeUtils';
+
 const styles = StyleSheet.create({
     recommendedBlock: {
-        marginLeft: 52,
-        marginTop: 42,
+        marginHorizontal: scale(52),
+        marginTop: verticalScale(42),
+        alignContent: "center",        
     },
     recommendedTitle: {
         fontFamily: "BarlowBold",
-        fontSize: 40,
-        lineHeight: 48,
+        fontSize: scale(40),
+        lineHeight: verticalScale(48),
         color: "#FFFFFF"
     }
 })
