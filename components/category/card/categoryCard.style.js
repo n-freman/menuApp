@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         height: verticalScale(178),
         borderRadius: scale(30),
         marginBottom: scale(10),
-        backgroundColor: COLORS.lightGreen
+        backgroundColor: COLORS.darkGreen
     },
     categoryTitle: {
         fontFamily: "BarlowRegular",

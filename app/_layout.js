@@ -1,4 +1,4 @@
-import { Stack } from 'expo-router';
+import { Stack, Slot } from 'expo-router';
 import { useCallback  } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { View, Text, FlatList } from 'react-native';
+import { useRouter } from "expo-router";
 
 import { scale, verticalScale } from '../../../sizeUtils';
 import CategoryCard from '../card/categoryCard';
@@ -28,6 +29,13 @@ const CategoryBlock = () => {
             imageUrl: "#"
         }
     ]);
+    
+    const router = useRouter();
+
+    const redirectToCategory = (id) => {
+        router.push(`/categories/${id}`)
+    }
+
     return (
         <View
             style={styles.categoryBlock}
@@ -38,10 +46,12 @@ const CategoryBlock = () => {
                 Categories
             </Text>
             <FlatList
+                showsHorizontalScrollIndicator={false}
                 data={categories}
                 renderItem={({item}) => (
                     <CategoryCard
                         item={item}
+                        onPress={redirectToCategory}
                     />
                 )}
                 keyExtractor={item => item?.categoryId}

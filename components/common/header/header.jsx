@@ -1,10 +1,10 @@
-import { Stack, useRouter, useSearchParams } from 'expo-router';
+import { Stack, Slot, } from 'expo-router';
 import { Text, SafeAreaView, View } from 'react-native';
 
 import MenuButton from '../menuButton/menuButton';
 import styles from './header.style';
 
-const Header = (props) => {
+const Header = ({onPress}) => {
     return (
         <>
             <Stack.Screen
@@ -15,7 +15,7 @@ const Header = (props) => {
                     <Text>Bellini</Text>
                 ),
                 headerLeft: () => (
-                    <MenuButton />
+                    <MenuButton onPress={onPress} />
                 ),
             }}
             />

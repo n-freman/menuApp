@@ -15,7 +15,10 @@ const styles = StyleSheet.create({
     },
     recommendedImage: {
         height: verticalScale(294),
-        width: scale(294)
+        width: scale(294),
+        backgroundColor: COLORS.darkGreen,
+        borderRadius: scale(35),
+        marginBottom: scale(10)
     },
     recommendedText: {
         fontFamily: "BarlowRegular",

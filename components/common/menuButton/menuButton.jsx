@@ -4,9 +4,9 @@ import styles from './menuButton.styles';
 
 import { images } from '../../../constants';
 
-const MenuButton = () => {
+const MenuButton = ({ onPress }) => {
     return (
-        <TouchableOpacity style={styles.menuButton}>
+        <TouchableOpacity style={styles.menuButton} onPress={onPress}>
             <Image 
                 source={images.menuIcon}
                 resizeMode="cover"

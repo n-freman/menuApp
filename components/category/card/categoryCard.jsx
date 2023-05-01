@@ -2,10 +2,11 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 
 import styles from './categoryCard.style';
 
-const CategoryCard = ({item}) => {
+const CategoryCard = ({item, onPress}) => {
     return (
         <TouchableOpacity
             style={styles.categoryCard}
+            onPress={() => {onPress(item.categoryId)}}
         >
             <Image
                 source={item.imageUrl}

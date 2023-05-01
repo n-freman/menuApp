@@ -4,23 +4,33 @@ import { scale, verticalScale } from '../../../sizeUtils';
 import { COLORS } from "../../../constants";
 
 const styles = StyleSheet.create({
-    menuButtonImage: {
-        width: scale(25),
-        height: scale(25),
+    header: {
+        margin_top: scale(50),
+        backgroundColor: "#040F0F",
+    },
+    backButtonImage: {
+        width: scale(26),
+        height: verticalScale(19),
     }, 
-    menuButton: {
+    backButton: {
         width: scale(60),
         height: verticalScale(60),
-        backgroundColor: COLORS.darkGreen,
-        color: "#FFFFFF",
         fontSize: 500,
         justifyContent: "center",
         alignItems: "center",
+        borderWidth: 1,
+        borderColor: "#FCFFFC",
         borderRadius: scale(15),
         marginVertical: verticalScale(31),
+        marginRight: scale(68),
+    },
+    topTitle: {
+        fontFamily: 'BarlowBold',
+        fontSize: scale(40),
+        lineHeight: verticalScale(48),
+        color: "#FCFFFC",
         marginLeft: scale(32),
-        marginRight: scale(28),
-      },
+    }
 })
 
 export default styles;
