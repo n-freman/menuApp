@@ -1,12 +1,16 @@
 import { StyleSheet } from "react-native";
 
 import { scale, verticalScale } from '../../../sizeUtils';
+import { COLORS } from '../../../constants';
 
 const styles = StyleSheet.create({
     header: {
-        marginTop: scale(50),
-        marginLeft: scale(52),
-        backgroundColor: "#040F0F",
+        backgroundColor: COLORS.black,
+        height: 90,
+    },
+    title: {
+        fontSize: scale(24),
+        color: COLORS.white,
     }
 })
 

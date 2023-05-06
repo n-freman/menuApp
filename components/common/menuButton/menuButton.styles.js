@@ -10,15 +10,14 @@ const styles = StyleSheet.create({
     }, 
     menuButton: {
         width: scale(60),
-        height: verticalScale(60),
+        height: scale(60),
         backgroundColor: COLORS.darkGreen,
         color: "#FFFFFF",
         fontSize: 500,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: scale(15),
-        marginVertical: verticalScale(31),
-        marginLeft: scale(32),
+        marginLeft: scale(52),
         marginRight: scale(28),
       },
 })

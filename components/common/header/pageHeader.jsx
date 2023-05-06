@@ -25,7 +25,7 @@ const Header = (props) => {
                     <TouchableOpacity
                         style={styles.backButton}
                         onPress={() => (
-                            router.back()
+                            router.push('/')
                         )}
                     >
                         <Image

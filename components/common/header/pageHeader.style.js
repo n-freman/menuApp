@@ -5,7 +5,6 @@ import { COLORS } from "../../../constants";
 
 const styles = StyleSheet.create({
     header: {
-        margin_top: scale(50),
         backgroundColor: "#040F0F",
     },
     backButtonImage: {

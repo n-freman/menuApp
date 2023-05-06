@@ -1,7 +1,9 @@
-import { Stack, Slot } from 'expo-router';
+import { Drawer } from "expo-router/drawer";
 import { useCallback  } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+
+import CustomDrawer from '../components/drawer';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -20,6 +22,9 @@ export default function HomeLayout() {
     if (!fontsLoaded) return null;  
 
     return (
-        <Stack  onLayout={onLayoutRootView} />
+        <Drawer
+            onLayout={onLayoutRootView}
+            drawerContent={(props) => <CustomDrawer />} 
+        />
     )
 }
