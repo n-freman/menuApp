@@ -24,7 +24,8 @@ export default function HomeLayout() {
     return (
         <Drawer
             onLayout={onLayoutRootView}
-            drawerContent={(props) => <CustomDrawer />} 
+            drawerContent={(props) => <CustomDrawer />}
+            initialRouteName="index"
         />
     )
 }

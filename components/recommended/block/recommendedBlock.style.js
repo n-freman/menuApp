@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
     recommendedBlock: {
         marginHorizontal: scale(52),
         marginTop: verticalScale(42),
-        alignContent: "center",        
+        alignContent: "center", 
+        flex: 1,       
     },
     recommendedTitle: {
         fontFamily: "BarlowBold",

@@ -2,10 +2,11 @@ import { TouchableOpacity, Text, Image } from "react-native";
 
 import styles from "./recommendedCard.style";
 
-const RecommendedCard = ({ item }) => {
+const RecommendedCard = ({ item, onClick }) => {
     return (
         <TouchableOpacity
             style={styles.recommendedCard}
+            onPress={onClick}
         >
             <Image
                 style={styles.recommendedImage}

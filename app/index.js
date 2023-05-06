@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React, {useRef, useState} from 'react';
 import {
     View, Text, ScrollView, SafeAreaView, StatusBar, ImageBackground, DrawerLayoutAndroid, Button
@@ -13,12 +14,12 @@ const Home = () => {
 
     return (
         <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
-          <ScrollView>
+          {/* <ScrollView> */}
               <StatusBar hidden />
               <Header/>
               <CategoryBlock />
               <RecommendedBlock />
-          </ScrollView>
+          {/* </ScrollView> */}
         </SafeAreaView>
     );
 }
