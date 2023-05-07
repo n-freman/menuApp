@@ -1,18 +1,22 @@
 import { useState, useRef } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, Image } from 'react-native';
 import {
     BottomSheetModal,
     BottomSheetModalProvider
 } from "@gorhom/bottom-sheet";
 
 import { scale, verticalScale } from '../../../sizeUtils';
-import styles from './recommendedBlock.style';
+import { DishBottomSheetContent, DishBottomSheetHandler } from '../../common/bottomSheet';
 import RecommendedCard from '../card/recommendedCard';
+import styles from './recommendedBlock.style';
+
 
 const RecommendedBlock = () => {
     const bottomSheetModalRef = useRef(null);
-    const snapPoints = ["70%"]
-    const openModal = () => {
+    const snapPoints = ["95%"]
+    const [modalIem, setModalItem] = useState(0);
+    const openModal = (id) => {
+        setModalItem(id)
         bottomSheetModalRef.current?.present()
     }
 
@@ -21,25 +25,73 @@ const RecommendedBlock = () => {
             id: 1,
             title: "Lasagna with bolognese sauce",
             price: 70,
-            imageUrl: "#"
+            imageUrl: "#",
+            ingredients: [
+                {
+                    title: 'Chopped meat',
+                    amount: '10 gr'
+                },
+                {
+                    title: 'Bolognese sauce',
+                    amount: '20 gr'
+                },
+                {
+                    title: 'Lasagna Sheets',
+                    amount: '15 gr'
+                },
+                {
+                    title: 'Chesee',
+                    amount: '10 gr'
+                }
+            ]
         },
         {
             id: 2,
             title: "Lasagna with bolognese sauce",
             price: 70,
-            imageUrl: "#"
+            imageUrl: "#",
+            ingredients: [
+                {
+                    title: 'Chopped meat',
+                    amount: '10 gr'
+                },
+                {
+                    title: 'Bolognese sauce',
+                    amount: '20 gr'
+                },
+            ]
         },
         {
             id: 3,
             title: "Lasagna with bolognese sauce",
             price: 70,
-            imageUrl: "#"
+            imageUrl: "#",
+            ingredients: [
+                {
+                    title: 'Chopped meat',
+                    amount: '10 gr'
+                },
+                {
+                    title: 'Bolognese sauce',
+                    amount: '20 gr'
+                },
+            ]
         },
         {
             id: 4,
-            title: "Lasagna with bolognese sauce",
+            title: "Tomato Sauce",
             price: 70,
-            imageUrl: "#"
+            imageUrl: "#",
+            ingredients: [
+                {
+                    title: 'Chopped meat',
+                    amount: '10 gr'
+                },
+                {
+                    title: 'Bolognese sauce',
+                    amount: '20 gr'
+                },
+            ]
         },
     ]);
     return (
@@ -57,7 +109,7 @@ const RecommendedBlock = () => {
                     renderItem={({ item }) => (
                         <RecommendedCard
                             item={item}
-                            onClick={openModal}
+                            onClick={() => openModal(item.id)}
                         />
                     )}
                     keyExtractor={item => item?.id}
@@ -78,12 +130,9 @@ const RecommendedBlock = () => {
                 ref={bottomSheetModalRef}
                 index={0}
                 snapPoints={snapPoints}
+                handleComponent={() => (<DishBottomSheetHandler />)}
             >
-                <View
-                    style={{flex: 1, backgroundColor: "#000000"}}
-                >
-                    <Text>Hello</Text>
-                </View>
+                <DishBottomSheetContent item={dishes.find(({ id }) => (id == modalIem))} />
             </BottomSheetModal>
         </BottomSheetModalProvider>
     );

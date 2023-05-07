@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { scale, verticalScale } from '../../../sizeUtils';
+import { COLORS } from '../../../constants';
 
 const styles = StyleSheet.create({
     recommendedBlock: {
@@ -13,8 +14,9 @@ const styles = StyleSheet.create({
         fontFamily: "BarlowBold",
         fontSize: scale(40),
         lineHeight: verticalScale(48),
-        color: "#FFFFFF"
-    }
+        color: COLORS.white
+    },
+
 })
 
 export default styles;
