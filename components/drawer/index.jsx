@@ -24,7 +24,7 @@ const CustomDrawer = () => {
         <DrawerItem
             label="Discount"
             labelStyle={styles.drawerItem}
-            onPress={() => {router.push('/discount/')}}
+            onPress={() => {router.push('/discounts/')}}
         />
         <DrawerItem
             label="About Us"

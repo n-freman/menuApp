@@ -1,8 +1,8 @@
 import { SafeAreaView } from "react-native";
 
-import { COLORS } from '../constants';
+import { COLORS } from '../../constants';
 
-const Discount = () => {
+const DiscountPage = () => {
     return (
         <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
 
@@ -10,4 +10,4 @@ const Discount = () => {
     );
 }
 
-export default Discount;
+export default DiscountPage;
