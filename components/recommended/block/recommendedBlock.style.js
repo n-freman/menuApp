@@ -14,9 +14,9 @@ const styles = StyleSheet.create({
         fontFamily: "BarlowBold",
         fontSize: scale(40),
         lineHeight: verticalScale(48),
-        color: COLORS.white
+        color: COLORS.white,
+        marginBottom: verticalScale(15)
     },
-
 })
 
 export default styles;
