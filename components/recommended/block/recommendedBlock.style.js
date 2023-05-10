@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
         color: COLORS.white,
         marginBottom: verticalScale(15)
     },
-
 })
 
 export default styles;
