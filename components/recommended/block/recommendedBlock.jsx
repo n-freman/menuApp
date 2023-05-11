@@ -130,9 +130,15 @@ const RecommendedBlock = () => {
                 ref={bottomSheetModalRef}
                 index={0}
                 snapPoints={snapPoints}
-                handleComponent={() => (<DishBottomSheetHandler />)}
+                handleComponent={() => (<DishBottomSheetHandler
+                    onPress={() => {
+                        bottomSheetModalRef.current?.close()
+                    }}/>)}
             >
-                <DishBottomSheetContent item={dishes.find(({ id }) => (id == modalIem))} />
+                <DishBottomSheetContent
+                    item={dishes.find(({ id }) => (id == modalIem))}
+
+                />
             </BottomSheetModal>
         </BottomSheetModalProvider>
     );

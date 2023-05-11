@@ -6,6 +6,7 @@ import {
 import { useRouter } from 'expo-router';
 
 import styles from './styles';
+import fetchData from '../../fetchUtils';
 
 const CustomDrawer = () => {
     const router = useRouter();
@@ -20,6 +21,7 @@ const CustomDrawer = () => {
         <DrawerItem
             label="Update"
             labelStyle={styles.drawerItem}
+            onPress={fetchData}
         />
         <DrawerItem
             label="Discount"

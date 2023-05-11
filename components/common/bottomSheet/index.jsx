@@ -1,6 +1,6 @@
-import { View, Image, Text, TouchableOpacity, FlatList } from 'react-native';
+import { Alert, View, Image, Text, TouchableWithoutFeedback, TouchableOpacity, FlatList } from 'react-native';
 
-import { images } from '../../../constants';
+import { COLORS, images } from '../../../constants';
 import styles from './style';
 
 const DishBottomSheetContent = ({ item }) => {
@@ -8,10 +8,11 @@ const DishBottomSheetContent = ({ item }) => {
         <View
             style={styles.bottomSheet}
         >
-            <Image
-                style={styles.bottomSheetImage}
-                source={item.imageUrl}
-            />
+
+                <Image
+                    style={styles.bottomSheetImage}
+                    source={item.imageUrl}
+                />
             <Text
                 style={styles.bottomSheetTitle}
             >
@@ -60,6 +61,7 @@ const DishBottomSheetContent = ({ item }) => {
                 </View>
                 <TouchableOpacity
                     style={styles.addButton}
+                    onPress={() => {Alert.alert('Added to cart')}}
                 >
                     <Text
                         style={styles.addButtonText}
@@ -72,15 +74,19 @@ const DishBottomSheetContent = ({ item }) => {
     );
 };
 
-const DishBottomSheetHandler = () => {
+const DishBottomSheetHandler = ({ onPress }) => {
     return (
-        <View
-            style={styles.bottomSheetHandler}
+        <TouchableWithoutFeedback
+            onPress={onPress}
         >
-            <Image
-                source={images.arrowDown}
-            />
-        </View>
+            <View
+                style={styles.bottomSheetHandler}
+            >
+                <Image
+                    source={images.arrowDown}
+                />
+            </View>
+        </TouchableWithoutFeedback>
     );
 }
 
