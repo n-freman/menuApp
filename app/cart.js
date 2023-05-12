@@ -10,7 +10,7 @@ import {
 import Header from "../components/common/header/pageHeader";
 import ClearButton from "../components/cart/clearButton";
 import { scale, verticalScale } from "../sizeUtils";
-import { COLORS, images } from '../constants';
+import { COLORS } from '../constants';
 import OrderLine from "../components/cart/orderLine";
 
 const Cart = () => {

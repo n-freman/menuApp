@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { View, TouchableOpacity, Image, Text } from "react-native";
+import {
+    useRecoilState
+} from 'recoil';
 import { useRouter } from "expo-router";
 
 import { images } from "../../../constants";
 import styles from "./styles";
-
+import { 
+    currentLanguage,
+    LANGUAGES
+} from "../../../langUtils";
 
 const CartButton = () => {
     const router = useRouter();
@@ -21,8 +27,7 @@ const CartButton = () => {
 }
 
 const LanguageButton = () => {
-    const availableLanguages = ['EN', 'RU', 'TM'];
-    const [language, setLanguage] = useState(0);
+    const [language, setLanguage] = useRecoilState(currentLanguage);
     const switchLang = () => {
         const newLang = language != 2 ? language + 1 : 0
         setLanguage(newLang)
@@ -39,7 +44,7 @@ const LanguageButton = () => {
             <Text
                 style={styles.languageText}
             >
-                {availableLanguages[language]}
+                {LANGUAGES[language]}
             </Text>
         </TouchableOpacity>
     );

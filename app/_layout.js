@@ -1,5 +1,6 @@
 import { Drawer } from "expo-router/drawer";
 import { useCallback  } from 'react';
+import { RecoilRoot } from 'recoil';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 
@@ -19,13 +20,15 @@ export default function HomeLayout() {
         }
     }, [fontsLoaded])
 
-    if (!fontsLoaded) return null;  
+    if (!fontsLoaded) return null;
 
     return (
-        <Drawer
-            onLayout={onLayoutRootView}
-            drawerContent={(props) => <CustomDrawer />}
-            initialRouteName="index"
-        />
+        <RecoilRoot>
+            <Drawer
+                onLayout={onLayoutRootView}
+                drawerContent={(props) => <CustomDrawer />}
+                initialRouteName="index"
+            />
+        </RecoilRoot>
     )
 }
