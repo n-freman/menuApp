@@ -16,6 +16,15 @@ const OrderLine = ({ item, amount }) => {
     const [cart, setCart] = useRecoilState(cartAtom)
     let curAmount = amount;
 
+    const removeFromCart = () => {
+        const oldCart = [...cart];
+        let currentItem = oldCart.find(({id}) => item.id == id )
+        oldCart.splice(oldCart.indexOf(currentItem), 1)
+        setCart([
+            ...oldCart
+        ])
+    }
+
     const updateCart = ({ item, amount }) => {
         if (amount <= 0) {
             Alert.alert("Amount must be bigger than zero")
@@ -95,6 +104,7 @@ const OrderLine = ({ item, amount }) => {
             </View>
             <TouchableOpacity
                 style={styles.removeImageBlock}
+                onPress={removeFromCart}
             >
                 <Image
                     style={styles.removeImage}
