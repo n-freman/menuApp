@@ -32,10 +32,10 @@ const CategoryBlock = () => {
                 renderItem={({item}) => (
                     <CategoryCard
                         item={item}
-                        onPress={redirectToCategory}
+                        onPress={() => redirectToCategory(item.id)}
                     />
                 )}
-                keyExtractor={item => item?.categoryId}
+                keyExtractor={item => item?.id}
                 contentContainerStyle={{columnGap: scale(24), marginVertical: verticalScale(50)}}
                 horizontal
             />
