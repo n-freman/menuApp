@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Alert } from 'react-native';
+import { atom } from  'recoil';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const URL = 'http://10.2.1.27:8000'
@@ -19,13 +20,21 @@ const fetchData = async () => {
                 )
             }
         );
-        const value = await AsyncStorage.getItem('data');
-        if (value !== null) {
-          console.log(value);
-        }
     } catch (error) {
         Alert.alert('Could not connect to the server')
     }
 }
 
+const loadData = async () => {
+    const data = await AsyncStorage.getItem('data');
+    const dataObj = JSON.parse(data)
+    return dataObj;
+}
+
+const data = atom({
+    key: 'data',
+    default: loadData()
+})
+
 export default fetchData;
+export { data };

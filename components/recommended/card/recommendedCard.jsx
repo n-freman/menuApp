@@ -10,7 +10,7 @@ const RecommendedCard = ({ item, onClick }) => {
         >
             <Image
                 style={styles.recommendedImage}
-                source={item.imageUrl}
+                source={item.image}
             />
             <Text
                 style={styles.recommendedText}

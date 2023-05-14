@@ -21,7 +21,7 @@ const CustomDrawer = () => {
         <DrawerItem
             label="Update"
             labelStyle={styles.drawerItem}
-            onPress={fetchData}
+            onPress={() => {fetchData(); router.push('/')}}
         />
         <DrawerItem
             label="Discount"

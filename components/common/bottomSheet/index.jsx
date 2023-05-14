@@ -1,9 +1,63 @@
-import { Alert, View, Image, Text, TouchableWithoutFeedback, TouchableOpacity, FlatList } from 'react-native';
+import { useState } from 'react';
+import { 
+    Alert,
+    View,
+    Image,
+    Text,
+    TouchableWithoutFeedback,
+    TouchableOpacity,
+    FlatList
+} from 'react-native';
 
-import { COLORS, images } from '../../../constants';
+import { cart as cartAtom } from '../../../globalCart';
+import { images } from '../../../constants';
 import styles from './style';
+import { useRecoilState } from 'recoil';
 
 const DishBottomSheetContent = ({ item }) => {
+    const [amount, setAmount] = useState(0);
+    const updateAmount = (sign) => {
+        switch (sign) {
+            case '+': 
+                setAmount(
+                    amount + 1
+                );
+                break;
+            case '-':
+                if (amount > 0) {
+                    setAmount(
+                        amount - 1
+                    )
+                } else {
+                    Alert.alert("Amount can not be less than zero")
+                }
+                break;
+        }
+    }
+    const [cart, setCart] = useRecoilState(cartAtom);
+    const updateCart = ({ item, amount }) => {
+        if (amount <= 0) {
+            Alert.alert("Amount must be bigger than zero")
+            return 0;
+        }
+        const curr = item
+        let currentItem = cart.find(({item}) => item == curr);
+        const oldCart = [...cart];
+        if (currentItem !== undefined) {
+            oldCart.splice(oldCart.indexOf(currentItem), 1)
+            currentItem.amount += amount
+        } else {
+            currentItem = {
+                item,
+                amount
+            }
+        }
+        setCart([
+            ...oldCart,
+            currentItem
+        ])
+        Alert.alert('Added to cart')
+    }
     return (
         <View
             style={styles.bottomSheet}
@@ -11,17 +65,17 @@ const DishBottomSheetContent = ({ item }) => {
 
                 <Image
                     style={styles.bottomSheetImage}
-                    source={item.imageUrl}
+                    source={item?.image}
                 />
             <Text
                 style={styles.bottomSheetTitle}
             >
-                {item.title}
+                {item?.title}
             </Text>
             {/* Rendering ingredients */}
             <FlatList
                 style={styles.ingredientList}
-                data={item.ingredients}
+                data={item?.ingredients}
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
@@ -34,34 +88,36 @@ const DishBottomSheetContent = ({ item }) => {
                 <Text
                     style={styles.ingredientPrice}
                 >
-                    {item.price} TMT
+                    {item?.price} TMT
                 </Text>
                 <View
                     style={styles.amountButtons}
                 >
                     <TouchableOpacity
                         style={styles.changeAmountButton}
+                        onPress={() => updateAmount('-')}
                     >
                         <Image
-                            source={images.minus}
+                            source={images?.minus}
                         />
                     </TouchableOpacity>
                     <Text
                         style={styles.amountText}
                     >
-                        0
+                        {amount}
                     </Text>
                     <TouchableOpacity
                         style={styles.changeAmountButton}
+                        onPress={() => updateAmount('+')}
                     >
                         <Image
-                            source={images.plus}
+                            source={images?.plus}
                         />
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity
                     style={styles.addButton}
-                    onPress={() => {Alert.alert('Added to cart')}}
+                    onPress={() => updateCart({item: item.id, amount})}
                 >
                     <Text
                         style={styles.addButtonText}
