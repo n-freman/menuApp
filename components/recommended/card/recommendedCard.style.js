@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
         width: scale(294),
         backgroundColor: COLORS.darkGreen,
         borderRadius: scale(35),
-        marginBottom: scale(10)
+        marginBottom: scale(10),
+        resizeMode: 'contain'
     },
     recommendedText: {
         fontFamily: "BarlowRegular",

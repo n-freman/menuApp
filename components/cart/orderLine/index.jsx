@@ -36,7 +36,6 @@ const OrderLine = ({ item, amount }) => {
         if (currentItem) {
             oldCart.splice(oldCart.indexOf(currentItem), 1)
         }
-        console.log(currentItem)
         currentItem = {
             item,
             amount
@@ -61,7 +60,7 @@ const OrderLine = ({ item, amount }) => {
         >
             <Image
                 style={styles.orderImage}
-                source={images.muffin}
+                source={{uri: item.image}}
             />
             <View
                 style={styles.orderMiddle}

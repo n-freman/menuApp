@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
         width: scale(800),
         height: verticalScale(500),
         backgroundColor: COLORS.darkGreen,
+        resizeMode: "cover"
     },
     bottomSheetTitle: {
         maxWidth: scale(447),

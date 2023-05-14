@@ -9,7 +9,7 @@ const CategoryCard = ({item, onPress}) => {
             onPress={() => {onPress(item.categoryId)}}
         >
             <Image
-                source={item.imageUrl}
+                source={{uri: item.image}}
                 style={styles.categoryImage}
             />
             <Text

@@ -65,7 +65,7 @@ const DishBottomSheetContent = ({ item }) => {
 
                 <Image
                     style={styles.bottomSheetImage}
-                    source={item?.image}
+                    source={{uri: item.image}}
                 />
             <Text
                 style={styles.bottomSheetTitle}

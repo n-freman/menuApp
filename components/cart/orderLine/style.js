@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
     orderImage: {
         borderRadius: scale(55),
         width: scale(294),
-        height: scale(294)
+        height: scale(294),
+        resizeMode: "contain"
     },
     orderText: {
         fontFamily: "BarlowRegular",
