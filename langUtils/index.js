@@ -1,4 +1,4 @@
-import { useSetRecoilState, useRecoilValue , atom } from 'recoil';
+import { atom } from 'recoil';
 
 const LANGUAGES = ['EN', 'RU', 'TM'];
 
