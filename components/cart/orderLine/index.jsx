@@ -13,8 +13,8 @@ import { images } from '../../../constants';
 import styles from './style';
 
 const OrderLine = ({ item, amount }) => {
-    const [itemAmount, setItemAmount] = useState(amount);
     const [cart, setCart] = useRecoilState(cartAtom)
+    let curAmount = amount;
 
     const updateCart = ({ item, amount }) => {
         if (amount <= 0) {
@@ -39,18 +39,12 @@ const OrderLine = ({ item, amount }) => {
     }
     
     const updateAmount = (sign) => {
-        console.log(sign == '+')
-        console.log('Before: ', itemAmount)
         if (sign == '+') {
-            setItemAmount(
-                itemAmount + 1,
-            )
+            curAmount += 1
         } else {
-            setItemAmount(
-                itemAmount - 1,
-            )
+            curAmount -= 1
         }
-        updateCart({item: item.id, amount: itemAmount})
+        updateCart({item: item.id, amount: curAmount})
     }
     return (
         <View
@@ -82,7 +76,7 @@ const OrderLine = ({ item, amount }) => {
                     <Text
                         style={styles.amountText}
                     >
-                        {itemAmount}
+                        {amount}
                     </Text>
                     <TouchableOpacity
                         style={styles.changeAmountButton}

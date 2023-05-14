@@ -18,7 +18,8 @@ import { data as dataAtom } from "../fetchUtils";
 
 const Cart = () => {
     const [cart, setCart] = useRecoilState(cartAtom);
-    let order = [];
+    const order = [];
+    const [orderState, setOrderState] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const data = useRecoilValue(dataAtom);
     const dishes = [];
@@ -48,7 +49,8 @@ const Cart = () => {
                 }
             )
         }
-        console.log(order)
+        order.sort((item1, item2) => item1.id - item2.id)
+        setOrderState(order);
         setTotalPrice(getTotalPrice());
     }, [cart])
 
@@ -61,11 +63,11 @@ const Cart = () => {
                 <ClearButton />
                 <FlatList
                     style={styles.orderList}
-                    data={order}
+                    data={orderState}
                     
-                    renderItem={({item, key}) => (
-                        <OrderLine item={item} amount={item.amount} />
-                    )}
+                    renderItem={({item, key}) => {
+                        return <OrderLine item={item} amount={item.amount} />
+                    }}
                     keyExtractor={item => item?.id}
                 />
                 <Text
