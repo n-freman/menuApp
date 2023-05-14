@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 
+import { getObjectTranslation as oT } from '../../../langUtils';
 import styles from './categoryCard.style';
 
 const CategoryCard = ({item, onPress}) => {
@@ -15,7 +16,7 @@ const CategoryCard = ({item, onPress}) => {
             <Text
                 style={styles.categoryTitle}
             >
-                {item.title}
+                {oT(item)}
             </Text>
         </TouchableOpacity>
     );

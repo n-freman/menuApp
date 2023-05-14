@@ -9,6 +9,7 @@ import {
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 import Header from "../components/common/header/pageHeader";
+import { getTextTranslation as tT} from '../langUtils';
 import ClearButton from "../components/cart/clearButton";
 import { scale, verticalScale } from "../sizeUtils";
 import { COLORS } from '../constants';
@@ -34,7 +35,7 @@ const Cart = () => {
         for (item of order) {
             price += item.amount * item.price;
         }
-        return price;
+        return price + price * 0.10;
     }
 
     const getItem = (id) => {
@@ -56,7 +57,7 @@ const Cart = () => {
 
     return (
         <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
-            <Header title="Order" />
+            <Header title={tT("Order")} />
             <View
                 style={styles.container}
             >
@@ -73,7 +74,7 @@ const Cart = () => {
                 <Text
                     style={styles.totalPrice}
                 >
-                    Total: {totalPrice} TMT
+                    {tT("Total")}: {totalPrice} TMT
                 </Text>
             </View>
         </SafeAreaView>

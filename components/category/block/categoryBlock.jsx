@@ -5,6 +5,7 @@ import { useRouter } from "expo-router";
 
 import { scale, verticalScale } from '../../../sizeUtils';
 import { data as dataAtom } from '../../../fetchUtils';
+import { getTextTranslation as tT } from '../../../langUtils';
 import CategoryCard from '../card/categoryCard';
 import styles from './categoryBlock.style';
 
@@ -24,7 +25,7 @@ const CategoryBlock = () => {
             <Text
                 style={styles.categoryTitle}
             >
-                Categories
+                {tT('Categories')}
             </Text>
             <FlatList
                 showsHorizontalScrollIndicator={false}

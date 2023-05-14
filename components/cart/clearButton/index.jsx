@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import { useRecoilState } from 'recoil';
 
+import { getTextTranslation as tT } from '../../../langUtils';
 import { images } from '../../../constants';
 import { cart as cartAtom } from '../../../globalCart';
 import styles from './style';
@@ -23,7 +24,7 @@ const ClearButton = () => {
         <Text
             style={styles.clearText}
         >
-            Clear
+            {tT("Clear")}
         </Text>
         <View
             style={styles.clearImage}

@@ -20,13 +20,20 @@ const styles = StyleSheet.create({
         borderRadius: scale(35),
         resizeMode: "contain"
     },
-    dishText: {
-        fontFamily: "BarlowRegular",
+    dishTitle: {
+        fontFamily: "BarlowBold",
         color: COLORS.white,
         fontSize: scale(24),
         marginTop: scale(10),
         lineHeight: scale(29),
     },
+    dishPrice: {
+        fontFamily: "BarlowRegular",
+        color: COLORS.white,
+        fontSize: scale(24),
+        marginTop: scale(10),
+        lineHeight: scale(29),
+    }
 })
 
 export default styles;

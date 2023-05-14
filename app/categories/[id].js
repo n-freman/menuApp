@@ -18,7 +18,8 @@ import {
     DishBottomSheetContent,
     DishBottomSheetHandler
 } from '../../components/common/bottomSheet';
-import {data as dataAtom } from '../../fetchUtils';
+import { getObjectTranslation as oT } from "../../langUtils";
+import { data as dataAtom } from '../../fetchUtils';
 import { COLORS } from '../../constants';
 import { scale } from '../../sizeUtils';
 
@@ -39,7 +40,7 @@ const Category = () => {
     }
     return (
        <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
-            <PageHeader title={currentCategory?.title} />
+            <PageHeader title={oT(currentCategory)} />
             <StatusBar hidden />
             <BottomSheetModalProvider>
                 <ScrollView
