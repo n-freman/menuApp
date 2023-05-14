@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
     FlatList,
     SafeAreaView,
@@ -6,21 +6,52 @@ import {
     StyleSheet,
     Text
 } from "react-native";
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import Header from "../components/common/header/pageHeader";
 import ClearButton from "../components/cart/clearButton";
 import { scale, verticalScale } from "../sizeUtils";
 import { COLORS } from '../constants';
 import OrderLine from "../components/cart/orderLine";
-import { cart } from "../globalCart";
+import { cart as cartAtom } from "../globalCart";
+import { data as dataAtom } from "../fetchUtils";
 
 const Cart = () => {
-    const [order, setOrder] = useRecoilState(cart);
-
-    const getItem(id) => {
-        return data.
+    const [cart, setCart] = useRecoilState(cartAtom);
+    let order = [];
+    const [totalPrice, setTotalPrice] = useState(0);
+    const data = useRecoilValue(dataAtom);
+    const dishes = [];
+    for (category of data) {
+        for (dish of category.dishes) {
+            dishes.push(dish);
+        }
     }
+
+    const getTotalPrice = () => {
+        let price = 0;
+        for (item of order) {
+            price += item.amount * item.price;
+        }
+        return price;
+    }
+
+    const getItem = (id) => {
+        return dishes.find((item) => item.id === id)
+    }
+    useEffect(() => {
+        for (item of cart) {
+            order.push(
+                {
+                    ...getItem(item.item),
+                    amount: item.amount
+                }
+            )
+        }
+        console.log(order)
+        setTotalPrice(getTotalPrice());
+    }, [cart])
+
     return (
         <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
             <Header title="Order" />
@@ -32,15 +63,15 @@ const Cart = () => {
                     style={styles.orderList}
                     data={order}
                     
-                    renderItem={({ item }) => (
-                        <OrderLine item={item} />
+                    renderItem={({item, key}) => (
+                        <OrderLine item={item} amount={item.amount} />
                     )}
                     keyExtractor={item => item?.id}
                 />
                 <Text
                     style={styles.totalPrice}
                 >
-                    Total: 70 TMT
+                    Total: {totalPrice} TMT
                 </Text>
             </View>
         </SafeAreaView>

@@ -9,7 +9,7 @@ import {
     FlatList
 } from 'react-native';
 
-import { cart } from '../../../globalCart';
+import { cart as cartAtom } from '../../../globalCart';
 import { images } from '../../../constants';
 import styles from './style';
 import { useRecoilState } from 'recoil';
@@ -17,7 +17,6 @@ import { useRecoilState } from 'recoil';
 const DishBottomSheetContent = ({ item }) => {
     const [amount, setAmount] = useState(0);
     const updateAmount = (sign) => {
-        console.log("updating")
         switch (sign) {
             case '+': 
                 setAmount(
@@ -35,20 +34,28 @@ const DishBottomSheetContent = ({ item }) => {
                 break;
         }
     }
-    const [cartObj, setCart] = useRecoilState(cart);
+    const [cart, setCart] = useRecoilState(cartAtom);
     const updateCart = ({ item, amount }) => {
         if (amount <= 0) {
             Alert.alert("Amount must be bigger than zero")
             return 0;
         }
-        setCart([
-            ...cartObj,
-            {
+        const curr = item
+        let currentItem = cart.find(({item}) => item == curr);
+        const oldCart = [...cart];
+        if (currentItem !== undefined) {
+            oldCart.splice(oldCart.indexOf(currentItem), 1)
+            currentItem.amount += amount
+        } else {
+            currentItem = {
                 item,
                 amount
             }
+        }
+        setCart([
+            ...oldCart,
+            currentItem
         ])
-        console.log(cartObj)
         Alert.alert('Added to cart')
     }
     return (
@@ -58,17 +65,17 @@ const DishBottomSheetContent = ({ item }) => {
 
                 <Image
                     style={styles.bottomSheetImage}
-                    source={item.imageUrl}
+                    source={item?.image}
                 />
             <Text
                 style={styles.bottomSheetTitle}
             >
-                {item.title}
+                {item?.title}
             </Text>
             {/* Rendering ingredients */}
             <FlatList
                 style={styles.ingredientList}
-                data={item.ingredients}
+                data={item?.ingredients}
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
@@ -81,7 +88,7 @@ const DishBottomSheetContent = ({ item }) => {
                 <Text
                     style={styles.ingredientPrice}
                 >
-                    {item.price} TMT
+                    {item?.price} TMT
                 </Text>
                 <View
                     style={styles.amountButtons}
@@ -91,7 +98,7 @@ const DishBottomSheetContent = ({ item }) => {
                         onPress={() => updateAmount('-')}
                     >
                         <Image
-                            source={images.minus}
+                            source={images?.minus}
                         />
                     </TouchableOpacity>
                     <Text
@@ -104,7 +111,7 @@ const DishBottomSheetContent = ({ item }) => {
                         onPress={() => updateAmount('+')}
                     >
                         <Image
-                            source={images.plus}
+                            source={images?.plus}
                         />
                     </TouchableOpacity>
                 </View>

@@ -1,12 +1,14 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { View, Text, FlatList, Image } from 'react-native';
 import {
     BottomSheetModal,
     BottomSheetModalProvider
 } from "@gorhom/bottom-sheet";
+import { useRecoilValue } from 'recoil';
 
 import { scale, verticalScale } from '../../../sizeUtils';
 import { DishBottomSheetContent, DishBottomSheetHandler } from '../../common/bottomSheet';
+import { data as dataAtom } from "../../../fetchUtils";
 import RecommendedCard from '../card/recommendedCard';
 import styles from './recommendedBlock.style';
 
@@ -20,80 +22,13 @@ const RecommendedBlock = () => {
         bottomSheetModalRef.current?.present()
     }
 
-    const [dishes, setDishes] = useState([
-        {
-            id: 1,
-            title: "Lasagna with bolognese sauce",
-            price: 70,
-            imageUrl: "#",
-            ingredients: [
-                {
-                    title: 'Chopped meat',
-                    amount: '10 gr'
-                },
-                {
-                    title: 'Bolognese sauce',
-                    amount: '20 gr'
-                },
-                {
-                    title: 'Lasagna Sheets',
-                    amount: '15 gr'
-                },
-                {
-                    title: 'Chesee',
-                    amount: '10 gr'
-                }
-            ]
-        },
-        {
-            id: 2,
-            title: "Lasagna with bolognese sauce",
-            price: 70,
-            imageUrl: "#",
-            ingredients: [
-                {
-                    title: 'Chopped meat',
-                    amount: '10 gr'
-                },
-                {
-                    title: 'Bolognese sauce',
-                    amount: '20 gr'
-                },
-            ]
-        },
-        {
-            id: 3,
-            title: "Lasagna with bolognese sauce",
-            price: 70,
-            imageUrl: "#",
-            ingredients: [
-                {
-                    title: 'Chopped meat',
-                    amount: '10 gr'
-                },
-                {
-                    title: 'Bolognese sauce',
-                    amount: '20 gr'
-                },
-            ]
-        },
-        {
-            id: 4,
-            title: "Tomato Sauce",
-            price: 70,
-            imageUrl: "#",
-            ingredients: [
-                {
-                    title: 'Chopped meat',
-                    amount: '10 gr'
-                },
-                {
-                    title: 'Bolognese sauce',
-                    amount: '20 gr'
-                },
-            ]
-        },
-    ]);
+    const data = useRecoilValue(dataAtom);
+    const dishes = [];
+    for (category of data) {
+        for (dish of category?.dishes) {
+            dishes.push(dish)
+        }
+    }
     return (
         <BottomSheetModalProvider>
             <View
@@ -136,7 +71,7 @@ const RecommendedBlock = () => {
                     }}/>)}
             >
                 <DishBottomSheetContent
-                    item={dishes.find(({ id }) => (id == modalIem))}
+                    item={dishes.find((item) => (item.id === modalIem))}
 
                 />
             </BottomSheetModal>

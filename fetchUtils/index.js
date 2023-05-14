@@ -27,7 +27,8 @@ const fetchData = async () => {
 
 const loadData = async () => {
     const data = await AsyncStorage.getItem('data');
-    return data;
+    const dataObj = JSON.parse(data)
+    return dataObj;
 }
 
 const data = atom({

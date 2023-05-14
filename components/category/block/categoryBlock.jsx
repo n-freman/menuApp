@@ -1,34 +1,15 @@
 import { useState } from 'react';
 import { View, Text, FlatList } from 'react-native';
+import { useRecoilValue } from 'recoil';
 import { useRouter } from "expo-router";
 
 import { scale, verticalScale } from '../../../sizeUtils';
+import { data as dataAtom } from '../../../fetchUtils';
 import CategoryCard from '../card/categoryCard';
 import styles from './categoryBlock.style';
 
 const CategoryBlock = () => {
-    const [categories, setCategories] = useState([
-        {
-            categoryId: 1,
-            title: "Signature dishes",
-            imageUrl: "#"
-        },
-        {
-            categoryId: 2,
-            title: "Drinks",
-            imageUrl: "#"
-        },
-        {
-            categoryId: 3,
-            title: "Drinks",
-            imageUrl: "#"
-        },
-        {
-            categoryId: 4,
-            title: "Drinks",
-            imageUrl: "#"
-        }
-    ]);
+    const categories = useRecoilValue(dataAtom);
     
     const router = useRouter();
 

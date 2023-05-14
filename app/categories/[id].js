@@ -1,21 +1,30 @@
 import {
-    View, Text, ScrollView, SafeAreaView, StatusBar, ImageBackground
+    FlatList,
+    ScrollView,
+    SafeAreaView,
+    StatusBar
 } from 'react-native';
-import { Stack, useRouter, useSearchParams } from 'expo-router';
+import { useRecoilValue } from 'recoil';
+import { useSearchParams } from 'expo-router';
 
 import PageHeader from '../../components/common/header/pageHeader';
+import {data as dataAtom } from '../../fetchUtils';
 import { COLORS } from '../../constants';
 
 const Category = () => {
     const { id } = useSearchParams();
+    const currentCategory = useRecoilValue(dataAtom).find((item) => item.id === id);
+    const dishes = currentCategory?.dishes;
     return (
        <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
-            {/* <ImageBackground source={require('../assets/bg.jpg')} style={{opacity: 0.2}}> */}
-                <ScrollView>
-                    <PageHeader title="Signature Dishes" />
-                    <StatusBar hidden />
-                </ScrollView>
-            {/* </ImageBackground> */}
+            <PageHeader title="Signature Dishes" />
+            <StatusBar hidden />
+            <FlatList
+                data={dishes}
+                renderItem={({item}) => (
+                    <Dish item={item} />
+                )}
+            />
        </SafeAreaView> 
     );
 }
