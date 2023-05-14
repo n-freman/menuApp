@@ -7,7 +7,11 @@ import {
 import { useRecoilValue } from 'recoil';
 
 import { scale, verticalScale } from '../../../sizeUtils';
-import { DishBottomSheetContent, DishBottomSheetHandler } from '../../common/bottomSheet';
+import {
+    DishBottomSheetContent,
+    DishBottomSheetHandler
+} from '../../common/bottomSheet';
+import { getTextTranslation as tT } from '../../../langUtils';
 import { data as dataAtom } from "../../../fetchUtils";
 import RecommendedCard from '../card/recommendedCard';
 import styles from './recommendedBlock.style';
@@ -37,7 +41,7 @@ const RecommendedBlock = () => {
                 <Text
                     style={styles.recommendedTitle}
                 >
-                    Recommended
+                    {tT('Recommended')}
                 </Text>
                 <FlatList
                     data={ dishes }

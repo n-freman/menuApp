@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
         width: scale(161),
         height: verticalScale(73),
         alignItems: "center",
-        paddingHorizontal: scale(45),
+        justifyContent: "center",
         paddingVertical: verticalScale(15),
         backgroundColor: COLORS.grayedWhite,
         borderRadius: scale(25)

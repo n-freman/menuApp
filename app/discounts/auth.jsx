@@ -6,6 +6,7 @@ import {
 } from "react-native";
 
 import Header from "../../components/common/header/pageHeader";
+import { getTextTranslation as tT } from "../../langUtils";
 import PasswordInput from "../../components/discounts/auth";
 import { COLORS } from "../../constants";
 import { verticalScale } from "../../sizeUtils";
@@ -13,7 +14,7 @@ import { verticalScale } from "../../sizeUtils";
 const DiscountAuthPage = () => {
     return (
         <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
-            <Header title="Discounts" />
+            <Header title={tT("Discounts")} />
             <View
                 style={styles.container}
             >

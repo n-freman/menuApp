@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { useRecoilState } from 'recoil';
 
+import { getObjectTranslation as oT } from '../../../langUtils';
 import { cart as cartAtom } from '../../../globalCart';
 import { images } from '../../../constants';
 import styles from './style';
@@ -18,7 +19,8 @@ const OrderLine = ({ item, amount }) => {
 
     const removeFromCart = () => {
         const oldCart = [...cart];
-        let currentItem = oldCart.find(({id}) => item.id == id )
+        const realItem = item;
+        let currentItem = oldCart.find(({ item }) => item === realItem.id )
         oldCart.splice(oldCart.indexOf(currentItem), 1)
         setCart([
             ...oldCart
@@ -68,7 +70,7 @@ const OrderLine = ({ item, amount }) => {
                 <Text
                     style={styles.orderText}
                 >
-                    {item.title}
+                    {oT(item)}
                 </Text>
                 <View
                     style={styles.amountButtons}

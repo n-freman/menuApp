@@ -1,4 +1,5 @@
 import { TouchableOpacity, Text, Image } from 'react-native';
+import { getObjectTranslation as oT } from "../../../../langUtils";
 import styles from './style';
 
 const Dish = ({item, onPress}) => {
@@ -12,12 +13,12 @@ const Dish = ({item, onPress}) => {
                 style={styles.dishImage}
             />
             <Text
-                style={styles.dishText}
+                style={styles.dishTitle}
             >
-                {item.title}
+                {oT(item)}
             </Text>
             <Text
-                style={styles.dishText}
+                style={styles.dishPrice}
             >
                 {item.price} TMT
             </Text>

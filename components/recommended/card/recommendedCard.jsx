@@ -1,5 +1,6 @@
 import { TouchableOpacity, Text, Image } from "react-native";
 
+import { getObjectTranslation as oT } from "../../../langUtils";
 import styles from "./recommendedCard.style";
 
 const RecommendedCard = ({ item, onClick }) => {
@@ -15,7 +16,7 @@ const RecommendedCard = ({ item, onClick }) => {
             <Text
                 style={styles.recommendedText}
             >
-                {item.title}
+                {oT(item)}
             </Text>
             <Text
                 style={styles.recommendedText}

@@ -9,6 +9,10 @@ import {
     FlatList
 } from 'react-native';
 
+import {
+    getObjectTranslation as oT,
+    getTextTranslation as tT
+} from '../../../langUtils';
 import { cart as cartAtom } from '../../../globalCart';
 import { images } from '../../../constants';
 import styles from './style';
@@ -70,7 +74,7 @@ const DishBottomSheetContent = ({ item }) => {
             <Text
                 style={styles.bottomSheetTitle}
             >
-                {item?.title}
+                {oT(item)}
             </Text>
             {/* Rendering ingredients */}
             <FlatList
@@ -122,7 +126,7 @@ const DishBottomSheetContent = ({ item }) => {
                     <Text
                         style={styles.addButtonText}
                     >
-                        Add
+                        {tT("Add")}
                     </Text>
                 </TouchableOpacity>
             </View>

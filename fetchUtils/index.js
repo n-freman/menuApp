@@ -13,14 +13,15 @@ const fetchImages = async () => {
 const fetchData = async () => {
     try {
         axios.get(`${URL}/api/all`).then(
-            (response) => {
+            async (response) => {
                 const data = JSON.stringify(response.data)
-                AsyncStorage.setItem(
+                await AsyncStorage.setItem(
                     'data',
                     data
                 )
             }
         );
+        
     } catch (error) {
         Alert.alert('Could not connect to the server')
     }
