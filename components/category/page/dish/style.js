@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
         borderColor: COLORS.lightGreen,
         borderRadius: scale(50),
         marginRight: scale(50),
+        marginBottom: scale(50)
     },
     dishImage: {
         backgroundColor: COLORS.darkGreen,

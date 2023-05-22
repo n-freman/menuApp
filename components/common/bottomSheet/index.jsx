@@ -79,7 +79,7 @@ const DishBottomSheetContent = ({ item }) => {
             {/* Rendering ingredients */}
             <FlatList
                 style={styles.ingredientList}
-                data={item?.ingredients}
+                data={item?.ingredients ? item.ingredients : []}
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (

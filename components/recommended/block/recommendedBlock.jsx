@@ -25,7 +25,6 @@ const RecommendedBlock = () => {
         setModalItem(id)
         bottomSheetModalRef.current?.present()
     }
-
     const data = useRecoilValue(dataAtom);
     const dishes = [];
     for (category of data) {
@@ -33,6 +32,7 @@ const RecommendedBlock = () => {
             dishes.push(dish)
         }
     }
+
     return (
         <BottomSheetModalProvider>
             <View

@@ -30,7 +30,10 @@ const fetchData = async () => {
 
 const loadData = async () => {
     const data = await AsyncStorage.getItem('data');
-    const dataObj = JSON.parse(data)
+    let dataObj = JSON.parse(data)
+    if (dataObj == null || dataObj == undefined) {
+        dataObj = []
+    }
     return dataObj;
 }
 

@@ -16,7 +16,7 @@ const CustomDrawer = () => {
         style={styles.drawerContainer}
     >
         <DrawerItem
-            label="Bellini"
+            label="Crystal"
             labelStyle={styles.drawerTitle}
             onPress={() => {router.push('/')}}
         />

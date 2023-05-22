@@ -16,7 +16,7 @@ const Header = () => {
                         <Text
                             style={styles.title}
                         >
-                            Bellini
+                            Crystal
                         </Text>
                     ),
                     headerLeft: () => (
