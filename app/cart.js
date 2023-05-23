@@ -4,7 +4,8 @@ import {
     SafeAreaView,
     View,
     StyleSheet,
-    Text
+    Text,
+    ImageBackground
 } from "react-native";
 import { useRecoilState, useRecoilValue } from 'recoil';
 
@@ -12,7 +13,7 @@ import Header from "../components/common/header/pageHeader";
 import { getTextTranslation as tT} from '../langUtils';
 import ClearButton from "../components/cart/clearButton";
 import { scale, verticalScale } from "../sizeUtils";
-import { COLORS } from '../constants';
+import { COLORS, images } from '../constants';
 import OrderLine from "../components/cart/orderLine";
 import { cart as cartAtom } from "../globalCart";
 import { data as dataAtom } from "../fetchUtils";
@@ -26,11 +27,6 @@ const Cart = () => {
     const [discount, setDiscount] = useRecoilState(discountAtom);
     const data = useRecoilValue(dataAtom);
     const dishes = [];
-    for (category of data) {
-        for (dish of category.dishes) {
-            dishes.push(dish);
-        }
-    }
 
     const getTotalPrice = () => {
         let price = 0;
@@ -40,6 +36,7 @@ const Cart = () => {
         // apply service percents
         price += price * 0.15;
         // apply discount
+        discount;
         price -= price * discount / 100;
         return price;
     }
@@ -48,6 +45,11 @@ const Cart = () => {
         return dishes.find((item) => item.id === id)
     }
     useEffect(() => {
+        for (category of data) {
+            for (dish of category.dishes) {
+                dishes.push(dish);
+            }
+        }
         for (item of cart) {
             order.push(
                 {
@@ -63,36 +65,43 @@ const Cart = () => {
 
     return (
         <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
-            <Header title={tT("Order")} />
-            <View
-                style={styles.container}
+            <ImageBackground
+                source={images.background}
+                style={{height: 825}}
+                resizeMode='stretch'
             >
-                <ClearButton />
-                <FlatList
-                    style={styles.orderList}
-                    data={orderState}
-                    
-                    renderItem={({item, key}) => {
-                        return <OrderLine item={item} amount={item.amount} />
-                    }}
-                    keyExtractor={item => item?.id}
-                />
-                <Text
-                    style={styles.totalPrice}
+                <Header title={tT("Order")} />
+                <View
+                    style={styles.container}
                 >
-                    {tT("Service")}: 15%
-                </Text>
-                <Text
-                    style={styles.totalPrice}
-                >
-                    {tT("Discount")}: {discount}%
-                </Text>
-                <Text
-                    style={styles.totalPrice}
-                >
-                    {tT("Total")}: {totalPrice} TMT
-                </Text>
-            </View>
+                    <ClearButton />
+                    <FlatList
+                        style={styles.orderList}
+                        data={orderState}
+                        
+                        renderItem={({item, key}) => {
+                            return <OrderLine item={item} amount={item.amount} />
+                        }}
+                        keyExtractor={item => item?.id}
+                        showsVerticalScrollIndicator={false}
+                    />
+                    <Text
+                        style={styles.totalPrice}
+                    >
+                        {tT("Service")}: 15%
+                    </Text>
+                    <Text
+                        style={styles.totalPrice}
+                    >
+                        {tT("Discount")}: {discount}%
+                    </Text>
+                    <Text
+                        style={styles.totalPrice}
+                    >
+                        {tT("Total")}: {totalPrice} TMT
+                    </Text>
+                </View>
+            </ImageBackground>
         </SafeAreaView>
     );
 }

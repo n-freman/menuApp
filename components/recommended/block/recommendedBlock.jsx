@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
-import { View, Text, FlatList, Image } from 'react-native';
+import { useState, useRef } from 'react';
+import { View, Text, FlatList } from 'react-native';
 import {
     BottomSheetModal,
     BottomSheetModalProvider
@@ -15,10 +15,10 @@ import { getTextTranslation as tT } from '../../../langUtils';
 import { data as dataAtom } from "../../../fetchUtils";
 import RecommendedCard from '../card/recommendedCard';
 import styles from './recommendedBlock.style';
+import { images } from '../../../constants';
 
 
 const RecommendedBlock = () => {
-    console.log('Here')
     const bottomSheetModalRef = useRef(null);
     const snapPoints = ["95%"]
     const [modalIem, setModalItem] = useState(0);

@@ -16,6 +16,7 @@ const resources = {
     "Discounted Amount": "Arzanladyşdan soňky baha",
     Service: "Обслуживание",
     Discount: "Скидка",
+    "Added to cart": "Satyn almalylara goşuldy"
 }
 
 export {resources};
