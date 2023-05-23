@@ -7,6 +7,9 @@ import minus from '../assets/minus.png';
 import muffin from '../assets/muffin.png';
 import globe from '../assets/globe.png';
 import cart from '../assets/cart.png';
+import background from '../assets/background.png';
+import logoGold from '../assets/logo-golden.png';
+import logoSilver from '../assets/logo-silver.png';
 
 export default { 
     menuIcon,
@@ -17,5 +20,8 @@ export default {
     minus,
     muffin,
     globe,
-    cart
+    cart,
+    background,
+    logoGold,
+    logoSilver
 };

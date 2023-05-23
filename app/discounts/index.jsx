@@ -7,9 +7,10 @@ import {
     TextInput
 } from "react-native";
 import { useRouter } from 'expo-router'
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 
 import { COLORS } from '../../constants';
+import { discount as discountAtom } from "../../discountUtils";
 import { cart as cartAtom } from "../../globalCart";
 import { data as dataAtom } from "../../fetchUtils"
 import { getTextTranslation as tT } from '../../langUtils';
@@ -20,7 +21,7 @@ import { verticalScale, scale } from "../../sizeUtils";
 const DiscountPage = () => {
     const router = useRouter();
     const cart = useRecoilValue(cartAtom);
-    const [discount, setDiscount] = useState(0);
+    const [discount, setDiscount] = useRecoilState(discountAtom);
     let order = [];
     const data = useRecoilValue(dataAtom);
     const dishes = [];

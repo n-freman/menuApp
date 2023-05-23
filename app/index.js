@@ -3,7 +3,7 @@ import {
     StatusBar,
 } from 'react-native';
 
-import { COLORS } from '../constants';
+import { COLORS, images } from '../constants';
 import Header from '../components/common/header/header';
 import CategoryBlock from '../components/category/block/categoryBlock';
 import RecommendedBlock from '../components/recommended/block/recommendedBlock';

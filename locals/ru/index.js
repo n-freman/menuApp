@@ -14,7 +14,9 @@ const resources = {
     "Input your password...": "Введите пароль",
     "Select discount amount": "Выберите размер скидки",
     "Discounted Amount": "Цена со скидкой",
-    "Enter Discount Amount": "Введите размер скидки"
+    "Enter Discount Amount": "Введите размер скидки",
+    Service: "Обслуживание",
+    Discount: "Скидка",
 }
 
 export {resources};

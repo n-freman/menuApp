@@ -18,6 +18,7 @@ import styles from './recommendedBlock.style';
 
 
 const RecommendedBlock = () => {
+    console.log('Here')
     const bottomSheetModalRef = useRef(null);
     const snapPoints = ["95%"]
     const [modalIem, setModalItem] = useState(0);

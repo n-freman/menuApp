@@ -19,6 +19,9 @@ const fetchData = async () => {
                     'data',
                     data
                 )
+            },
+            () => {
+                Alert.alert('Could not connect to the server')
             }
         );
         

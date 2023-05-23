@@ -1,9 +1,11 @@
-import { Stack, Slot, } from 'expo-router';
-import { Text, SafeAreaView, View } from 'react-native';
+import { Stack } from 'expo-router';
+import { Image } from 'react-native';
 
 import MenuButton from '../menuButton/menuButton';
 import HeaderRight from '../headerRight';
 import styles from './header.style';
+import { images } from '../../../constants';
+import { scale } from '../../../sizeUtils';
 
 const Header = () => {
     return (
@@ -13,11 +15,10 @@ const Header = () => {
                     headerStyle: styles.header,
                     headerShadowVisible: false,
                     headerTitle: () => (
-                        <Text
-                            style={styles.title}
-                        >
-                            Crystal
-                        </Text>
+                        <Image
+                            source={images.logoSilver}
+                            style={{width: 150, height: 75, marginLeft: scale(80)}}
+                        />
                     ),
                     headerLeft: () => (
                         <MenuButton/>

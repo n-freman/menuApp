@@ -16,12 +16,14 @@ import { COLORS } from '../constants';
 import OrderLine from "../components/cart/orderLine";
 import { cart as cartAtom } from "../globalCart";
 import { data as dataAtom } from "../fetchUtils";
+import { discount as discountAtom } from "../discountUtils";
 
 const Cart = () => {
     const [cart, setCart] = useRecoilState(cartAtom);
     const order = [];
     const [orderState, setOrderState] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [discount, setDiscount] = useRecoilState(discountAtom);
     const data = useRecoilValue(dataAtom);
     const dishes = [];
     for (category of data) {
@@ -35,7 +37,11 @@ const Cart = () => {
         for (item of order) {
             price += item.amount * item.price;
         }
-        return price + price * 0.10;
+        // apply service percents
+        price += price * 0.15;
+        // apply discount
+        price -= price * discount / 100;
+        return price;
     }
 
     const getItem = (id) => {
@@ -74,6 +80,16 @@ const Cart = () => {
                 <Text
                     style={styles.totalPrice}
                 >
+                    {tT("Service")}: 15%
+                </Text>
+                <Text
+                    style={styles.totalPrice}
+                >
+                    {tT("Discount")}: {discount}%
+                </Text>
+                <Text
+                    style={styles.totalPrice}
+                >
                     {tT("Total")}: {totalPrice} TMT
                 </Text>
             </View>
@@ -87,14 +103,14 @@ const styles = StyleSheet.create({
     },
     orderList: {
         marginTop: verticalScale(36),
-        height: verticalScale(910)
+        height: verticalScale(850)
     },
     totalPrice: {
         fontFamily: "BarlowRegular",
         fontSize: scale(36),
         color: COLORS.grayedWhite,
         lineHeight: scale(43.2),
-        marginTop: scale(30)
+        marginTop: scale(15)
     }
 })
 
