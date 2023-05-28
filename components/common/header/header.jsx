@@ -5,7 +5,7 @@ import MenuButton from '../menuButton/menuButton';
 import HeaderRight from '../headerRight';
 import styles from './header.style';
 import { COLORS, images } from '../../../constants';
-import { scale } from '../../../sizeUtils';
+import { scale, verticalScale } from '../../../sizeUtils';
 
 const Header = () => {
     return (
@@ -23,7 +23,8 @@ const Header = () => {
                     headerTitle: () => (
                         <Image
                             source={images.logoSilver}
-                            style={{width: 150, height: 75, marginLeft: scale(80)}}
+                            style={{width: 150, height: 90, marginLeft: scale(80)}}
+                            resizeMode='contain'
                         />
                     ),
                     headerLeft: () => (

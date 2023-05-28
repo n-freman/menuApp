@@ -17,11 +17,13 @@ import { data as dataAtom } from "../../fetchUtils"
 import { getTextTranslation as tT } from '../../langUtils';
 import Header from '../../components/common/header/pageHeader';
 import { verticalScale, scale } from "../../sizeUtils";
+import { useState } from "react";
 
 const DiscountPage = () => {
     const router = useRouter();
     const cart = useRecoilValue(cartAtom);
     const [discount, setDiscount] = useRecoilState(discountAtom);
+    const [currentDiscount, setCurDiscount] = useState(discount);
     let order = [];
     const data = useRecoilValue(dataAtom);
     const dishes = [];
@@ -79,13 +81,13 @@ const DiscountPage = () => {
                             keyboardType="numeric"
                             style={styles.amountInput}
                             onChangeText={(value) => {
-                                setDiscount(parseInt(value))
+                                setCurDiscount(parseInt(value))
                             }}
                         />
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.submitButton}
-                        onPress={() => router.push('/')}
+                        onPress={() => {setDiscount(currentDiscount); router.push('/')}}
                     >
                         <Text
                             style={styles.submitText}

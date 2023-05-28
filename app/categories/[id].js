@@ -4,7 +4,8 @@ import {
     SafeAreaView,
     StatusBar,
     StyleSheet,
-    ImageBackground
+    ImageBackground,
+    View
 } from 'react-native';
 import {
     BottomSheetModal,
@@ -49,16 +50,18 @@ const Category = () => {
                 <PageHeader title={oT(currentCategory)} />
                 <StatusBar hidden />
                 <BottomSheetModalProvider>
-                    <ScrollView
-                        contentContainerStyle={styles.container}
-                    >
-                        {dishes?.map((item) => (
-                            <Dish
-                                item={item}
-                                onPress={() => openModal(item.id)}
-                            />
-                        ))}
-                    </ScrollView>
+                    <View style={{flex: 1}}>
+                        <ScrollView
+                            contentContainerStyle={styles.container}
+                        >
+                            {dishes?.map((item) => (
+                                <Dish
+                                    item={item}
+                                    onPress={() => openModal(item.id)}
+                                />
+                            ))}
+                        </ScrollView>
+                    </View>
                     <BottomSheetModal
                         ref={bottomSheetModalRef}
                         index={0}
@@ -82,7 +85,7 @@ const Category = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flexGrow: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: "center",

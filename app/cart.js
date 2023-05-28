@@ -24,7 +24,7 @@ const Cart = () => {
     const order = [];
     const [orderState, setOrderState] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
-    const [discount, setDiscount] = useRecoilState(discountAtom);
+    const discount = useRecoilValue(discountAtom);
     const data = useRecoilValue(dataAtom);
     const dishes = [];
 
@@ -36,7 +36,6 @@ const Cart = () => {
         // apply service percents
         price += price * 0.15;
         // apply discount
-        discount;
         price -= price * discount / 100;
         return price;
     }
@@ -61,7 +60,7 @@ const Cart = () => {
         order.sort((item1, item2) => item1.id - item2.id)
         setOrderState(order);
         setTotalPrice(getTotalPrice());
-    }, [cart])
+    }, [cart, discount])
 
     return (
         <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>

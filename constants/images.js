@@ -11,6 +11,7 @@ import background from '../assets/background.png';
 import headerBackground from '../assets/headerBackground.png';
 import logoGold from '../assets/logo-golden.png';
 import logoSilver from '../assets/logo-silver.png';
+import qr from '../assets/qr.png';
 
 export default { 
     menuIcon,
@@ -25,5 +26,6 @@ export default {
     background,
     logoGold,
     logoSilver,
-    headerBackground
+    headerBackground,
+    qr
 };

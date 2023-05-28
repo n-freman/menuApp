@@ -14,8 +14,8 @@ const resources = {
     "Select discount amount": "Arzanladyş Möçberi Saýlaň",
     "Enter Discount Amount": "Arzanladyş Möçberi Giriziň",
     "Discounted Amount": "Arzanladyşdan soňky baha",
-    Service: "Обслуживание",
-    Discount: "Скидка",
+    Service: "Hyzmat",
+    Discount: "Arzanladyş",
     "Added to cart": "Satyn almalylara goşuldy"
 }
 

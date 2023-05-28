@@ -18,14 +18,9 @@ const CustomDrawer = () => {
     return <DrawerContentScrollView
         style={styles.drawerContainer}
     >
-        {/* <DrawerItem
-            label="Crystal"
-            labelStyle={styles.drawerTitle}
-            onPress={() => {router.push('/')}}
-        /> */}
         <Image
             source={images.logoGold}
-            style={{height: 150, width: 300, marginVertical: scale(50)}}
+            style={{height: 200, width: 300, marginVertical: scale(50)}}
         />
         <DrawerItem
             label={tT("Update")}
@@ -40,6 +35,7 @@ const CustomDrawer = () => {
         <DrawerItem
             label={tT("About Us")}
             labelStyle={styles.drawerItem}
+            onPress={() => {router.push('/aboutUs/')}}
         />
     </DrawerContentScrollView>
 }

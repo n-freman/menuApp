@@ -1,10 +1,9 @@
 import axios from 'axios';
 import { Alert, } from 'react-native';
 import { atom } from  'recoil';
-import { Buffer } from 'buffer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const URL = 'http://10.2.1.27:8000'
+const URL = 'http://192.168.0.186:8000'
 
 const fetchImages = async () => {
     return 0;
