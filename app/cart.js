@@ -89,11 +89,13 @@ const Cart = () => {
                     >
                         {tT("Service")}: 15%
                     </Text>
+                    { Boolean(discount) &&
                     <Text
                         style={styles.totalPrice}
                     >
                         {tT("Discount")}: {discount}%
                     </Text>
+                    }
                     <Text
                         style={styles.totalPrice}
                     >
