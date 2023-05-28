@@ -20,6 +20,8 @@ import { useRecoilState } from 'recoil';
 
 const DishBottomSheetContent = ({ item }) => {
     const [amount, setAmount] = useState(0);
+    const text = tT('Added to cart');
+    const itemTranslated = oT(item);
     const updateAmount = (sign) => {
         switch (sign) {
             case '+': 
@@ -39,7 +41,7 @@ const DishBottomSheetContent = ({ item }) => {
         }
     }
     const [cart, setCart] = useRecoilState(cartAtom);
-    const updateCart = ({ item, amount }) => {
+    const updateCart = ({ item, amount}) => {
         if (amount <= 0) {
             Alert.alert("Amount must be bigger than zero")
             return 0;
@@ -60,7 +62,7 @@ const DishBottomSheetContent = ({ item }) => {
             ...oldCart,
             currentItem
         ])
-        Alert.alert('Added to cart')
+        Alert.alert(itemTranslated + " X " + amount + " " + text)
     }
     return (
         <View
@@ -69,7 +71,7 @@ const DishBottomSheetContent = ({ item }) => {
 
                 <Image
                     style={styles.bottomSheetImage}
-                    source={{uri: item.image}}
+                    source={{uri: item?.image}}
                 />
             <Text
                 style={styles.bottomSheetTitle}

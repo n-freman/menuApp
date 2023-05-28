@@ -4,23 +4,26 @@ import {
     Text,
     View,
     TouchableOpacity,
-    TextInput
+    TextInput,
+    ImageBackground
 } from "react-native";
 import { useRouter } from 'expo-router'
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 
-import { COLORS } from '../../constants';
+import { COLORS, images } from '../../constants';
+import { discount as discountAtom } from "../../discountUtils";
 import { cart as cartAtom } from "../../globalCart";
 import { data as dataAtom } from "../../fetchUtils"
 import { getTextTranslation as tT } from '../../langUtils';
 import Header from '../../components/common/header/pageHeader';
-import { useState } from "react";
 import { verticalScale, scale } from "../../sizeUtils";
+import { useState } from "react";
 
 const DiscountPage = () => {
     const router = useRouter();
     const cart = useRecoilValue(cartAtom);
-    const [discount, setDiscount] = useState(0);
+    const [discount, setDiscount] = useRecoilState(discountAtom);
+    const [currentDiscount, setCurDiscount] = useState(discount);
     let order = [];
     const data = useRecoilValue(dataAtom);
     const dishes = [];
@@ -51,43 +54,49 @@ const DiscountPage = () => {
 
     return (
         <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
-            <Header title={tT("Select discount amount")} />
-            <View
-                style={styles.container}
+            <ImageBackground
+                source={images.background}
+                style={{height: 825}}
+                resizeMode='stretch'
             >
-                <Text
-                    style={styles.text}
-                >
-                    {tT('Total')}: {getTotalPrice()} TMT
-                </Text>
-                <Text
-                    style={styles.text}
-                >
-                    {tT('Discounted Amount')}: {getTotalPrice() - (discount ? getTotalPrice() * discount / 100 : 0)} TMT
-                </Text>
-                <TouchableOpacity
-                    style={styles.amountWrapper}
-                >
-                    <TextInput
-                        placeholder={tT("Enter Discount Amount")}
-                        keyboardType="numeric"
-                        style={styles.amountInput}
-                        onChangeText={(value) => {
-                            setDiscount(parseInt(value))
-                        }}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.submitButton}
-                    onPress={() => router.push('/')}
+                <Header title={tT("Select discount amount")} />
+                <View
+                    style={styles.container}
                 >
                     <Text
-                        style={styles.submitText}
+                        style={styles.text}
                     >
-                        OK
+                        {tT('Total')}: {getTotalPrice()} TMT
                     </Text>
-                </TouchableOpacity>
-            </View>
+                    <Text
+                        style={styles.text}
+                    >
+                        {tT('Discounted Amount')}: {getTotalPrice() - (discount ? getTotalPrice() * discount / 100 : 0)} TMT
+                    </Text>
+                    <TouchableOpacity
+                        style={styles.amountWrapper}
+                    >
+                        <TextInput
+                            placeholder={tT("Enter Discount Amount")}
+                            keyboardType="numeric"
+                            style={styles.amountInput}
+                            onChangeText={(value) => {
+                                setCurDiscount(parseInt(value))
+                            }}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.submitButton}
+                        onPress={() => {setDiscount(currentDiscount); router.push('/')}}
+                    >
+                        <Text
+                            style={styles.submitText}
+                        >
+                            OK
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+            </ImageBackground>
         </SafeAreaView>
     );
 }

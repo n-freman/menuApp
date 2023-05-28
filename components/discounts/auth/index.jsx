@@ -17,6 +17,7 @@ const PasswordInput = () => {
     const [password, setPassword] = useState("");
     const redirect = () => {
         if (password == '1234') {
+            setPassword("");
             router.push('/discounts/')
         } else {
             Alert.alert('Password is wrong')
@@ -36,6 +37,7 @@ const PasswordInput = () => {
                 placeholderTextColor={COLORS.gray}
                 keyboardType='numeric'
                 onChangeText={(value) => setPassword(value)}
+                value={password}
             />
         </View>
         <TouchableOpacity

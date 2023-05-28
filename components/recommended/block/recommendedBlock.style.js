@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         marginHorizontal: scale(52),
         marginTop: verticalScale(42),
         alignContent: "center", 
-        flex: 1,       
+        flex: 1,
     },
     recommendedTitle: {
         fontFamily: "BarlowBold",

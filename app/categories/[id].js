@@ -4,6 +4,8 @@ import {
     SafeAreaView,
     StatusBar,
     StyleSheet,
+    ImageBackground,
+    View
 } from 'react-native';
 import {
     BottomSheetModal,
@@ -20,7 +22,7 @@ import {
 } from '../../components/common/bottomSheet';
 import { getObjectTranslation as oT } from "../../langUtils";
 import { data as dataAtom } from '../../fetchUtils';
-import { COLORS } from '../../constants';
+import { COLORS, images } from '../../constants';
 import { scale } from '../../sizeUtils';
 
 const Category = () => {
@@ -40,41 +42,50 @@ const Category = () => {
     }
     return (
        <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
-            <PageHeader title={oT(currentCategory)} />
-            <StatusBar hidden />
-            <BottomSheetModalProvider>
-                <ScrollView
-                    contentContainerStyle={styles.container}
-                >
-                    {dishes?.map((item) => (
-                        <Dish
-                            item={item}
-                            onPress={() => openModal(item.id)}
-                        />
-                    ))}
-                </ScrollView>
-                <BottomSheetModal
-                    ref={bottomSheetModalRef}
-                    index={0}
-                    snapPoints={snapPoints}
-                    handleComponent={() => (<DishBottomSheetHandler
-                        onPress={() => {
-                            bottomSheetModalRef.current?.close()
-                        }}/>)}
-                >
-                    <DishBottomSheetContent
-                        item={dishes.find((item) => (item.id === modalIem))}
+            <ImageBackground
+                source={images.background}
+                style={{height: 825}}
+                resizeMode='stretch'
+            >
+                <PageHeader title={oT(currentCategory)} />
+                <StatusBar hidden />
+                <BottomSheetModalProvider>
+                    <View style={{flex: 1}}>
+                        <ScrollView
+                            contentContainerStyle={styles.container}
+                        >
+                            {dishes?.map((item) => (
+                                <Dish
+                                    item={item}
+                                    onPress={() => openModal(item.id)}
+                                />
+                            ))}
+                        </ScrollView>
+                    </View>
+                    <BottomSheetModal
+                        ref={bottomSheetModalRef}
+                        index={0}
+                        snapPoints={snapPoints}
+                        handleComponent={() => (<DishBottomSheetHandler
+                            onPress={() => {
+                                bottomSheetModalRef.current?.close()
+                            }}/>)}
+                    >
+                        <DishBottomSheetContent
+                            item={dishes.find((item) => (item.id === modalIem))}
 
-                    />
-                </BottomSheetModal>
-            </BottomSheetModalProvider>
+                        />
+                    </BottomSheetModal>
+                </BottomSheetModalProvider>
+            </ImageBackground>
+
        </SafeAreaView> 
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flexGrow: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: "center",

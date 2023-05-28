@@ -9,12 +9,15 @@ import { useRecoilState } from 'recoil';
 import { getTextTranslation as tT } from '../../../langUtils';
 import { images } from '../../../constants';
 import { cart as cartAtom } from '../../../globalCart';
+import { discount as discountAtom } from '../../../discountUtils';
 import styles from './style';
 
 const ClearButton = () => {
     const [cart, setCart] = useRecoilState(cartAtom);
+    const [discount, setDiscount] = useRecoilState(discountAtom);
     const onPress = () => {
         setCart([]);
+        setDiscount(0);
     }
     return (
     <TouchableOpacity

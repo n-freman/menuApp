@@ -4,7 +4,8 @@ import {
     SafeAreaView,
     View,
     StyleSheet,
-    Text
+    Text,
+    ImageBackground
 } from "react-native";
 import { useRecoilState, useRecoilValue } from 'recoil';
 
@@ -12,36 +13,42 @@ import Header from "../components/common/header/pageHeader";
 import { getTextTranslation as tT} from '../langUtils';
 import ClearButton from "../components/cart/clearButton";
 import { scale, verticalScale } from "../sizeUtils";
-import { COLORS } from '../constants';
+import { COLORS, images } from '../constants';
 import OrderLine from "../components/cart/orderLine";
 import { cart as cartAtom } from "../globalCart";
 import { data as dataAtom } from "../fetchUtils";
+import { discount as discountAtom } from "../discountUtils";
 
 const Cart = () => {
     const [cart, setCart] = useRecoilState(cartAtom);
     const order = [];
     const [orderState, setOrderState] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
+    const discount = useRecoilValue(discountAtom);
     const data = useRecoilValue(dataAtom);
     const dishes = [];
-    for (category of data) {
-        for (dish of category.dishes) {
-            dishes.push(dish);
-        }
-    }
 
     const getTotalPrice = () => {
         let price = 0;
         for (item of order) {
             price += item.amount * item.price;
         }
-        return price + price * 0.10;
+        // apply service percents
+        price += price * 0.15;
+        // apply discount
+        price -= price * discount / 100;
+        return price;
     }
 
     const getItem = (id) => {
         return dishes.find((item) => item.id === id)
     }
     useEffect(() => {
+        for (category of data) {
+            for (dish of category.dishes) {
+                dishes.push(dish);
+            }
+        }
         for (item of cart) {
             order.push(
                 {
@@ -53,30 +60,47 @@ const Cart = () => {
         order.sort((item1, item2) => item1.id - item2.id)
         setOrderState(order);
         setTotalPrice(getTotalPrice());
-    }, [cart])
+    }, [cart, discount])
 
     return (
         <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
-            <Header title={tT("Order")} />
-            <View
-                style={styles.container}
+            <ImageBackground
+                source={images.background}
+                style={{height: 825}}
+                resizeMode='stretch'
             >
-                <ClearButton />
-                <FlatList
-                    style={styles.orderList}
-                    data={orderState}
-                    
-                    renderItem={({item, key}) => {
-                        return <OrderLine item={item} amount={item.amount} />
-                    }}
-                    keyExtractor={item => item?.id}
-                />
-                <Text
-                    style={styles.totalPrice}
+                <Header title={tT("Order")} />
+                <View
+                    style={styles.container}
                 >
-                    {tT("Total")}: {totalPrice} TMT
-                </Text>
-            </View>
+                    <ClearButton />
+                    <FlatList
+                        style={styles.orderList}
+                        data={orderState}
+                        
+                        renderItem={({item, key}) => {
+                            return <OrderLine item={item} amount={item.amount} />
+                        }}
+                        keyExtractor={item => item?.id}
+                        showsVerticalScrollIndicator={false}
+                    />
+                    <Text
+                        style={styles.totalPrice}
+                    >
+                        {tT("Service")}: 15%
+                    </Text>
+                    <Text
+                        style={styles.totalPrice}
+                    >
+                        {tT("Discount")}: {discount}%
+                    </Text>
+                    <Text
+                        style={styles.totalPrice}
+                    >
+                        {tT("Total")}: {totalPrice} TMT
+                    </Text>
+                </View>
+            </ImageBackground>
         </SafeAreaView>
     );
 }
@@ -87,14 +111,14 @@ const styles = StyleSheet.create({
     },
     orderList: {
         marginTop: verticalScale(36),
-        height: verticalScale(910)
+        height: verticalScale(850)
     },
     totalPrice: {
         fontFamily: "BarlowRegular",
         fontSize: scale(36),
         color: COLORS.grayedWhite,
         lineHeight: scale(43.2),
-        marginTop: scale(30)
+        marginTop: scale(15)
     }
 })
 

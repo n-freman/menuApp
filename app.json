@@ -13,6 +13,7 @@
     },
     "android": {
       "package": "com.nfreman.menuApp"
-    }
+    },
+    "icon": "./assets/logo-outer.png"
   }
 }
