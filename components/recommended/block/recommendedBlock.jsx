@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import {
     BottomSheetModal,
@@ -27,12 +27,14 @@ const RecommendedBlock = () => {
         bottomSheetModalRef.current?.present()
     }
     const data = useRecoilValue(dataAtom);
-    const dishes = [];
+    let dishes = [];
     for (category of data) {
         for (dish of category?.dishes) {
             dishes.push(dish)
         }
     }
+    dishes = dishes.slice(0, 50).sort(() => Math.random() - Math.random()).slice(0, 4)
+    console.log(dishes)
 
     return (
         <BottomSheetModalProvider>

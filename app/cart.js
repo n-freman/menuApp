@@ -20,6 +20,7 @@ import { data as dataAtom } from "../fetchUtils";
 import { discount as discountAtom } from "../discountUtils";
 
 const Cart = () => {
+    const discountText = tT("Discount");
     const [cart, setCart] = useRecoilState(cartAtom);
     const order = [];
     const [orderState, setOrderState] = useState([]);
@@ -89,11 +90,11 @@ const Cart = () => {
                     >
                         {tT("Service")}: 15%
                     </Text>
-                    { Boolean(discount) &&
+                    { parseInt(discount) !== 0 &&
                     <Text
                         style={styles.totalPrice}
                     >
-                        {tT("Discount")}: {discount}%
+                        {discountText}: {discount}%
                     </Text>
                     }
                     <Text

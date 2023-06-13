@@ -31,6 +31,7 @@ const CategoryBlock = () => {
                 showsHorizontalScrollIndicator={false}
                 data={categories}
                 renderItem={({item}) => (
+                    
                     <CategoryCard
                         item={item}
                         onPress={() => redirectToCategory(item.id)}

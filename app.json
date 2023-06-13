@@ -4,15 +4,15 @@
     "web": {
       "bundler": "metro"
     },
-    "name": "menuApp",
-    "slug": "menuApp",
+    "name": "Crystal",
+    "slug": "Crystall",
     "extra": {
       "eas": {
         "projectId": "04c0114d-4b77-4589-bf55-e91b217cba9f"
       }
     },
     "android": {
-      "package": "com.nfreman.menuApp"
+      "package": "com.nfreman.Crystall"
     },
     "icon": "./assets/logo-outer.png"
   }
