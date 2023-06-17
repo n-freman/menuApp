@@ -1,6 +1,4 @@
 const resources = {
-    Categories: "Категории",
-    Recommended: "Рекоммендованные блюда",
     Update: "Обновление",
     Discounts: "Скидки",
     "About Us": "О Нас",
@@ -18,6 +16,8 @@ const resources = {
     "Added to cart": "Добавлено в корзину",
     Service: "Обслуживание",
     Discount: "Скидка",
+    'Bar Card': "Карта Бара",
+    "Main Menu": "Основное Меню"
 }
 
 export {resources};

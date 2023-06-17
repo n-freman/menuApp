@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
     categoryTitle: {
         fontFamily: "BarlowRegular",
         color: "#FCFFFC",
-        fontSize: scale(24),
-        lineHeight: scale(28.8)
+        fontSize: scale(22),
+        lineHeight: scale(25)
     }
 })
 

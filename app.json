@@ -6,14 +6,14 @@
     },
     "name": "Crystal",
     "slug": "Crystall",
-    "extra": {
-      "eas": {
-        "projectId": "04c0114d-4b77-4589-bf55-e91b217cba9f"
-      }
-    },
     "android": {
       "package": "com.nfreman.Crystall"
     },
-    "icon": "./assets/logo-outer.png"
+    "icon": "./assets/logo-outer.png",
+    "extra": {
+      "eas": {
+        "projectId": "fc083327-d297-4149-b86d-15cb5ad41fed"
+      }
+    }
   }
 }

@@ -68,11 +68,6 @@ const DiscountPage = () => {
                     >
                         {tT('Total')}: {getTotalPrice()} TMT
                     </Text>
-                    <Text
-                        style={styles.text}
-                    >
-                        {tT('Discounted Amount')}: {getTotalPrice() - (discount ? getTotalPrice() * discount / 100 : 0)} TMT
-                    </Text>
                     <TouchableOpacity
                         style={styles.amountWrapper}
                     >

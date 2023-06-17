@@ -6,11 +6,12 @@ import { useRouter } from "expo-router";
 import { scale, verticalScale } from '../../../sizeUtils';
 import { data as dataAtom } from '../../../fetchUtils';
 import { getTextTranslation as tT } from '../../../langUtils';
-import CategoryCard from '../card/categoryCard';
+import BarCategoryCard from '../card/barCategoryCard';
 import styles from './categoryBlock.style';
 
-const CategoryBlock = () => {
-    const categories = useRecoilValue(dataAtom);
+const BarCategoryBlock = () => {
+    const categoriesValue = useRecoilValue(dataAtom);
+    const categories = categoriesValue.filter(({ is_bar }) => is_bar)
     
     const router = useRouter();
 
@@ -25,14 +26,13 @@ const CategoryBlock = () => {
             <Text
                 style={styles.categoryTitle}
             >
-                {tT('Categories')}
+                {tT('Bar Card')}
             </Text>
             <FlatList
                 showsHorizontalScrollIndicator={false}
                 data={categories}
                 renderItem={({item}) => (
-                    
-                    <CategoryCard
+                    <BarCategoryCard
                         item={item}
                         onPress={() => redirectToCategory(item.id)}
                     />
@@ -45,4 +45,4 @@ const CategoryBlock = () => {
     );
 }
 
-export default CategoryBlock;
+export default BarCategoryBlock;
