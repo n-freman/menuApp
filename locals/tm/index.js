@@ -1,6 +1,4 @@
 const resources = {
-    Categories: "Kategoriýalar",
-    Recommended: "Hödürlenýän",
     Update: "Täzele",
     Discounts: "Arzanladyş",
     "About Us": "Biz Barada",
@@ -16,7 +14,9 @@ const resources = {
     "Discounted Amount": "Arzanladyşdan soňky baha",
     Service: "Hyzmat",
     Discount: "Arzanladyş",
-    "Added to cart": "Satyn almalylara goşuldy"
+    "Added to cart": "Satyn almalylara goşuldy",
+    'Bar Card': "Bar Kartasy",
+    "Main Menu": "Esasy Menýu"
 }
 
 export {resources};

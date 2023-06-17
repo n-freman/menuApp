@@ -1,9 +1,9 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 
 import { getObjectTranslation as oT } from '../../../langUtils';
-import styles from './categoryCard.style';
+import styles from './barCategoryCard.style';
 
-const CategoryCard = ({item, onPress}) => {
+const BarCategoryCard = ({item, onPress}) => {
     return (
         <TouchableOpacity
             style={styles.categoryCard}
@@ -22,4 +22,4 @@ const CategoryCard = ({item, onPress}) => {
     );
 }
 
-export default CategoryCard;
+export default BarCategoryCard;

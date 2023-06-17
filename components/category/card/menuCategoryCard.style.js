@@ -3,30 +3,31 @@ import { StyleSheet } from "react-native";
 import { scale, verticalScale } from '../../../sizeUtils';
 import { COLORS } from "../../../constants";
 
+
 const styles = StyleSheet.create({
-    recommendedCard: {
-        color: "#FFF",
-        height: verticalScale(443),
+    card: {
         width: scale(324),
+        height: verticalScale(400),
         borderColor: COLORS.lightGreen,
         borderWidth: scale(1),
-        borderRadius: scale(30),
-        padding: scale(15)
+        borderRadius: scale(35),
+        paddingTop: scale(21),
+        paddingHorizontal: scale(14),
+        marginBottom: scale(52),
+        alignItems: "center"
     },
-    recommendedImage: {
-        height: verticalScale(294),
+    cardImage: {
         width: scale(294),
+        height: scale(294),
         backgroundColor: COLORS.darkGreen,
         borderRadius: scale(35),
-        marginBottom: scale(10),
-        resizeMode: 'contain'
+        marginBottom: verticalScale(35),
+        resizeMode: "cover",
     },
-    recommendedText: {
-        fontFamily: "BarlowRegular",
-        color: "#FCFFFC",
+    cardTitle: {
+        color: COLORS.white,
         fontSize: scale(24),
-        lineHeight: scale(28.8),
-        maxWidth: scale(280)
+        lineHeight: scale(28.8)
     }
 })
 

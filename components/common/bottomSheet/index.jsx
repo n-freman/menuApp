@@ -69,10 +69,10 @@ const DishBottomSheetContent = ({ item }) => {
             style={styles.bottomSheet}
         >
 
-                <Image
-                    style={styles.bottomSheetImage}
-                    source={{uri: item?.image}}
-                />
+            <Image
+                style={styles.bottomSheetImage}
+                source={{uri: item?.image}}
+            />
             <Text
                 style={styles.bottomSheetTitle}
             >
@@ -160,12 +160,7 @@ const Ingredient = ({ item }) => {
             <Text
                 style={styles.ingredientText}
             >
-                {item.title}
-            </Text>
-            <Text
-                style={styles.ingredientText}
-            >
-                {item.amount}
+                {oT(item)}
             </Text>
         </View>
     );

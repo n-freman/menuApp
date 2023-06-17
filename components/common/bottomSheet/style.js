@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         borderColor: COLORS.black,
     },
     ingredientList: {
-        marginTop: verticalScale(20)
+        marginTop: verticalScale(20),
     },
     ingredient: {
         display: "flex",
