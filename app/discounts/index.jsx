@@ -56,7 +56,7 @@ const DiscountPage = () => {
         <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
             <ImageBackground
                 source={images.background}
-                style={{height: 825}}
+                style={{height: scale(1220)}}
                 resizeMode='stretch'
             >
                 <Header title={tT("Select discount amount")} />
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
         height: verticalScale(66),
         alignItems: "center",
         justifyContent: "center",
-        marginTop: verticalScale(400),
+        marginTop: verticalScale(500),
         marginHorizontal: "42.5%"
     },
     submitText: {

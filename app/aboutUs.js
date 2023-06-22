@@ -18,7 +18,7 @@ const AboutUs = () => {
         <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
             <ImageBackground
                 source={images.background}
-                style={{height: 825}}
+                style={{height: scale(1220)}}
                 resizeMode='stretch'
             >
                 <StatusBar hidden />

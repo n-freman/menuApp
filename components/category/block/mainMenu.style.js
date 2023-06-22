@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         flexWrap: "wrap",
         flex: 1,
-        maxWidth: scale(800-104)
+        maxWidth: scale(800-104),
+        marginBottom: verticalScale(50)
     },
     menuTitle: {
         marginLeft: scale(52),
@@ -18,7 +19,8 @@ const styles = StyleSheet.create({
         fontFamily: "BarlowBold",
         fontSize: scale(40),
         lineHeight: verticalScale(48),
-        color: "#FFFFFF"
+        color: "#FFFFFF",
+        textTransform: "uppercase",
     }
 });
 

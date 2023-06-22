@@ -29,11 +29,16 @@ const Cart = () => {
     const data = useRecoilValue(dataAtom);
     const dishes = [];
 
-    const getTotalPrice = () => {
+    const getPrice = () => {
         let price = 0;
-        for (item of order) {
+        for (item of orderState) {
             price += item.amount * item.price;
         }
+        return price;
+    }
+
+    const getTotalPrice = () => {
+        let price = getPrice();
         // apply service percents
         price += price * 0.15;
         // apply discount
@@ -67,7 +72,7 @@ const Cart = () => {
         <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
             <ImageBackground
                 source={images.background}
-                style={{height: 825}}
+                style={{height: scale(1220)}}
                 resizeMode='stretch'
             >
                 <Header title={tT("Order")} />
@@ -86,15 +91,20 @@ const Cart = () => {
                         showsVerticalScrollIndicator={false}
                     />
                     <Text
-                        style={styles.totalPrice}
+                        style={styles.price}
                     >
-                        {tT("Service")}: 15%
+                        {tT("Price")}: {getPrice()} TMT
+                    </Text>
+                    <Text
+                        style={styles.price}
+                    >
+                        {tT("Service")}: 15% ({getPrice() * 0.15} TMT)
                     </Text>
                     { parseInt(discount) !== 0 &&
                     <Text
-                        style={styles.totalPrice}
+                        style={styles.price}
                     >
-                        {discountText}: {discount}%
+                        {discountText}: {discount}% ({getPrice() * discount / 100} TMT)
                     </Text>
                     }
                     <Text
@@ -116,12 +126,19 @@ const styles = StyleSheet.create({
         marginTop: verticalScale(36),
         height: verticalScale(850)
     },
+    price: {
+        fontFamily: "BarlowRegular",
+        fontSize: scale(24),
+        color: COLORS.grayedWhite,
+        lineHeight: scale(30),
+        marginTop: scale(5)
+    },
     totalPrice: {
         fontFamily: "BarlowRegular",
         fontSize: scale(36),
         color: COLORS.grayedWhite,
         lineHeight: scale(43.2),
-        marginTop: scale(15)
+        marginTop: verticalScale(15),
     }
 })
 

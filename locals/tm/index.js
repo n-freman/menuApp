@@ -16,7 +16,9 @@ const resources = {
     Discount: "Arzanladyş",
     "Added to cart": "Satyn almalylara goşuldy",
     'Bar Card': "Bar Kartasy",
-    "Main Menu": "Esasy Menýu"
+    "Main Menu": "Esasy Menýu",
+    "My\nOrder": "Meniň\nSargym",
+    "Back": "Yza"
 }
 
 export {resources};

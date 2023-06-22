@@ -3,15 +3,13 @@ import {
     StatusBar,
     ImageBackground,
     ScrollView,
-    View,
-    Dimensions
 } from 'react-native';
 
 import { COLORS, images } from '../constants';
 import Header from '../components/common/header/header';
 import BarCategoryBlock from '../components/category/block/barCategoryBlock';
 import MainMenu from '../components/category/block/mainMenu';
-import { scale, verticalScale } from '../sizeUtils';
+import { verticalScale } from '../sizeUtils';
 
 const Home = () => {
     return (

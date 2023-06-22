@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
         fontFamily: "BarlowBold",
         fontSize: scale(40),
         lineHeight: verticalScale(48),
-        color: "#FFFFFF"
+        color: "#FFFFFF",
+        textTransform: "uppercase",
     }
 })
 

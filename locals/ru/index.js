@@ -4,7 +4,7 @@ const resources = {
     "About Us": "О Нас",
     Order: "Заказ",
     Clear: "Очистить",
-    Total: "Итого",
+    Total: "К оплате",
     Add: "Добавь",
     "Added to cart": "Добавлено в Корзину",
     "Amount must be bigger than zero": "Количество должно быть больше нуля",
@@ -17,7 +17,10 @@ const resources = {
     Service: "Обслуживание",
     Discount: "Скидка",
     'Bar Card': "Карта Бара",
-    "Main Menu": "Основное Меню"
+    "Main Menu": "Основное Меню",
+    "My\nOrder": "Мой\nЗаказ",
+    Back: "Назад",
+    Price: "Цена"
 }
 
 export {resources};
