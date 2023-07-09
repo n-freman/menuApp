@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         borderRadius: scale(55),
         width: scale(294),
         height: scale(294),
-        resizeMode: "contain"
+        resizeMode: "cover"
     },
     orderText: {
         fontFamily: "BarlowRegular",

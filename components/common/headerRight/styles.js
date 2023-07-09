@@ -34,7 +34,16 @@ const styles = StyleSheet.create({
     cartButton: {
         borderRadius: scale(15),
         backgroundColor: COLORS.darkGreen,
-        padding: scale(14)
+        padding: scale(14),
+        paddingVertical: verticalScale(10),
+    },
+    cartText: {
+        fontFamily: "BarlowBold",
+        color: COLORS.white,
+        fontSize: scale(18),
+        lineHeight: scale(25),
+        textAlign: "center",
+        maxWidth: scale(80)
     }
 })
 

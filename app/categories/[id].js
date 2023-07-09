@@ -23,7 +23,7 @@ import {
 import { getObjectTranslation as oT } from "../../langUtils";
 import { data as dataAtom } from '../../fetchUtils';
 import { COLORS, images } from '../../constants';
-import { scale } from '../../sizeUtils';
+import { scale, verticalScale } from '../../sizeUtils';
 
 const Category = () => {
     const bottomSheetModalRef = useRef(null);
@@ -44,7 +44,7 @@ const Category = () => {
        <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
             <ImageBackground
                 source={images.background}
-                style={{height: 825}}
+                style={{height: scale(1220)}}
                 resizeMode='stretch'
             >
                 <PageHeader title={oT(currentCategory)} />
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "flex-start",
         paddingLeft: scale(52),
+        paddingBottom: verticalScale(50)
     }
 })
 

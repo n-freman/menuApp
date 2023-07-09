@@ -1,8 +1,5 @@
-import { useState } from "react";
 import { View, TouchableOpacity, Image, Text } from "react-native";
-import {
-    useRecoilState
-} from 'recoil';
+import { useRecoilState } from 'recoil';
 import { useRouter } from "expo-router";
 
 import { images } from "../../../constants";
@@ -11,6 +8,7 @@ import {
     currentLanguage,
     LANGUAGES
 } from "../../../langUtils";
+import { getTextTranslation as tT } from "../../../langUtils";
 
 const CartButton = () => {
     const router = useRouter();
@@ -19,9 +17,11 @@ const CartButton = () => {
             style={styles.cartButton}
             onPress={() => {router.push('/cart/')}}
         >
-            <Image
-                source={ images.cart }
-            />
+            <Text
+                style={styles.cartText}
+            >
+                {tT('My\nOrder')}
+            </Text>
         </TouchableOpacity>
     );
 }

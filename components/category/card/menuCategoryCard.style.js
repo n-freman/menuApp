@@ -7,7 +7,7 @@ import { COLORS } from "../../../constants";
 const styles = StyleSheet.create({
     card: {
         width: scale(324),
-        height: verticalScale(400),
+        height: scale(400),
         borderColor: COLORS.lightGreen,
         borderWidth: scale(1),
         borderRadius: scale(35),

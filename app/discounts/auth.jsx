@@ -9,14 +9,14 @@ import Header from "../../components/common/header/pageHeader";
 import { getTextTranslation as tT } from "../../langUtils";
 import PasswordInput from "../../components/discounts/auth";
 import { COLORS, images } from "../../constants";
-import { verticalScale } from "../../sizeUtils";
+import { scale, verticalScale } from "../../sizeUtils";
 
 const DiscountAuthPage = () => {
     return (
         <SafeAreaView style={{backgroundColor: COLORS.black, flex: 1}}>
             <ImageBackground
                 source={images.background}
-                style={{height: 825}}
+                style={{height: scale(1220)}}
                 resizeMode='stretch'
             >
                 <Header title={tT("Discounts")} />

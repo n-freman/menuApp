@@ -19,7 +19,7 @@ import styles from './style';
 import { useRecoilState } from 'recoil';
 
 const DishBottomSheetContent = ({ item }) => {
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState(1);
     const text = tT('Added to cart');
     const itemTranslated = oT(item);
     const updateAmount = (sign) => {
@@ -79,7 +79,7 @@ const DishBottomSheetContent = ({ item }) => {
                 {oT(item)}
             </Text>
             {/* Rendering ingredients */}
-            <FlatList
+            {/* <FlatList
                 style={styles.ingredientList}
                 data={item?.ingredients ? item.ingredients : []}
                 showsHorizontalScrollIndicator={false}
@@ -87,6 +87,9 @@ const DishBottomSheetContent = ({ item }) => {
                 renderItem={({ item }) => (
                     <Ingredient item={item} />
                 )}
+            /> */}
+            <Ingredients
+                items={item?.ingredients ? item.ingredients : []}
             />
             <View
                 style={styles.addToCartBlock}
@@ -94,7 +97,7 @@ const DishBottomSheetContent = ({ item }) => {
                 <Text
                     style={styles.ingredientPrice}
                 >
-                    {item?.price} TMT
+                    {item?.price + " TMT"}
                 </Text>
                 <View
                     style={styles.amountButtons}
@@ -144,15 +147,17 @@ const DishBottomSheetHandler = ({ onPress }) => {
             <View
                 style={styles.bottomSheetHandler}
             >
-                <Image
-                    source={images.arrowDown}
-                />
+                <Text
+                    style={styles.bottomSheetHandlerText}
+                >
+                    {tT('Back')}
+                </Text>
             </View>
         </TouchableWithoutFeedback>
     );
 }
 
-const Ingredient = ({ item }) => {
+const Ingredients = ({ items }) => {
     return (
         <View
             style={styles.ingredient}
@@ -160,8 +165,11 @@ const Ingredient = ({ item }) => {
             <Text
                 style={styles.ingredientText}
             >
-                {oT(item)}
+                {items.map((item) => (
+                    oT(item) + ", "
+                ))}
             </Text>
+            <View style={styles.ingredientBottomLine}></View>
         </View>
     );
 }

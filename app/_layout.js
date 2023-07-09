@@ -3,6 +3,7 @@ import { useCallback  } from 'react';
 import { RecoilRoot } from 'recoil';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+// import * as NavigationBar from "expo-navigation-bar";
 
 import CustomDrawer from '../components/drawer';
 
@@ -17,6 +18,7 @@ export default function HomeLayout() {
     const onLayoutRootView = useCallback(async () => {
         if (fontsLoaded) {
             await SplashScreen.hideAsync();
+            // await NavigationBar.setVisibilityAsync("hidden");
         }
     }, [fontsLoaded])
 

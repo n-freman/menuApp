@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         width: scale(294),
         height: scale(294),
         borderRadius: scale(35),
-        resizeMode: "contain"
+        resizeMode: "cover"
     },
     dishTitle: {
         fontFamily: "BarlowBold",

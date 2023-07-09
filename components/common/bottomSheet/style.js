@@ -5,7 +5,7 @@ import { COLORS } from '../../../constants';
 
 const styles = StyleSheet.create({
     bottomSheet: {
-        backgroundColor: COLORS.black,
+        backgroundColor: COLORS.darkGreen,
         flex: 1,
         borderTopWidth: 0,
     },
@@ -22,24 +22,33 @@ const styles = StyleSheet.create({
         marginTop: scale(30),
         fontFamily: "BarlowBold",
         fontSize: scale(36),
+        height: verticalScale(100)
     },
     bottomSheetHandler: {
         backgroundColor: COLORS.black,
         alignItems: "center",
         paddingVertical: verticalScale(15),
-        backgroundColor:  COLORS.black,
         borderWidth: 0.8,
-        borderColor: COLORS.black,
+        borderColor: COLORS.darkGreen,
+        borderTopLeftRadius: scale(15),
+        borderTopRightRadius: scale(15)
+    },
+    bottomSheetHandlerText: {
+        color: COLORS.white,
+        fontSize: scale(24),
+        textTransform: "uppercase"
     },
     ingredientList: {
         marginTop: verticalScale(20),
     },
     ingredient: {
         display: "flex",
-        flexDirection: "row",
+        flexDirection: "column",
         justifyContent: "space-between",
         paddingHorizontal: scale(33.5),
-        marginVertical: verticalScale(5)
+        marginTop: verticalScale(70),
+        marginBottom: 0,
+        height: verticalScale(100),
     },
     ingredientText: {
         color: COLORS.white,
@@ -47,22 +56,27 @@ const styles = StyleSheet.create({
         fontSize: scale(24),
         lineHeight: scale(28.8)
     },
+    ingredientBottomLine: {
+        height: verticalScale(1.7),
+        width: scale(720),
+        backgroundColor: COLORS.white
+    },
     addToCartBlock: {
-        backgroundColor: COLORS.darkGreen,
+        backgroundColor: COLORS.black,
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "center",
         gap: scale(100),
         marginHorizontal: scale(35),
-        marginVertical: verticalScale(30),
-        paddingHorizontal: scale(48),
+        marginVertical: verticalScale(70),
+        paddingHorizontal: scale(100),
         paddingVertical: verticalScale(29.5),
         alignItems: "center",
         borderRadius: scale(25),
         height: verticalScale(109)
     },
     ingredientPrice: {
-        width: scale(123),
+        width: scale(170),
         fontFamily: "BarlowRegular",
         fontSize: scale(36),
         color: COLORS.grayedWhite,

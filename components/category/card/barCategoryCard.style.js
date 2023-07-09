@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         borderRadius: scale(30),
         marginBottom: scale(10),
         backgroundColor: COLORS.darkGreen,
-        resizeMode: "contain"
+        resizeMode: "cover",
     },
     categoryTitle: {
         fontFamily: "BarlowRegular",
