@@ -24,7 +24,6 @@ const Cart = () => {
     const [cart, setCart] = useRecoilState(cartAtom);
     const order = [];
     const [orderState, setOrderState] = useState([]);
-    const [totalPrice, setTotalPrice] = useState(0);
     const discount = useRecoilValue(discountAtom);
     const data = useRecoilValue(dataAtom);
     const dishes = [];
@@ -65,7 +64,6 @@ const Cart = () => {
         }
         order.sort((item1, item2) => item1.id - item2.id)
         setOrderState(order);
-        setTotalPrice(getTotalPrice());
     }, [cart, discount])
 
     return (
@@ -104,13 +102,13 @@ const Cart = () => {
                     <Text
                         style={styles.price}
                     >
-                        {discountText}: {discount}% ({getPrice() * discount / 100} TMT)
+                        {discountText}: {discount}% ({(getPrice() + getPrice() * 0.15) * discount / 100} TMT)
                     </Text>
                     }
                     <Text
                         style={styles.totalPrice}
                     >
-                        {tT("Total")}: {totalPrice} TMT
+                        {tT("Total")}: {getTotalPrice()} TMT
                     </Text>
                 </View>
             </ImageBackground>

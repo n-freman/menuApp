@@ -18,7 +18,8 @@ const resources = {
     'Bar Card': "Bar Kartasy",
     "Main Menu": "Esasy Menýu",
     "My\nOrder": "Meniň\nSargym",
-    "Back": "Yza"
+    Back: "Yza",
+    Price: "Baha"
 }
 
 export {resources};

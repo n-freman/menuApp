@@ -19,7 +19,7 @@ import styles from './style';
 import { useRecoilState } from 'recoil';
 
 const DishBottomSheetContent = ({ item }) => {
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState(1);
     const text = tT('Added to cart');
     const itemTranslated = oT(item);
     const updateAmount = (sign) => {
