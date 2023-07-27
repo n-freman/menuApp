@@ -29,7 +29,7 @@ const CartButton = () => {
 const LanguageButton = () => {
     const [language, setLanguage] = useRecoilState(currentLanguage);
     const switchLang = () => {
-        const newLang = language != 2 ? language + 1 : 0
+        const newLang = language === 0 ? 1 : 0
         setLanguage(newLang)
     }
     return (

@@ -3,7 +3,7 @@ import { resources as tm } from '../locals/tm';
 import { resources as ru } from '../locals/ru';
 
 
-const LANGUAGES = ['EN', 'RU', 'TM'];
+const LANGUAGES = ['EN', 'RU'];
 
 const currentLanguage = atom({
     key: 'currentLanguage',
@@ -17,8 +17,6 @@ const getTextTranslation = (text) => {
             return text;
         case 1: // ru
             return ru[text];
-        case 2: // tm
-            return tm[text]
     }
     return text;
 }
@@ -30,8 +28,6 @@ const getObjectTranslation = (object) => {
             return object?.title;
         case 1: // ru
             return object?.translations.find(({ lang }) => lang == 'ru')?.title;
-        case 2: // tm
-            return object?.translations.find(({ lang }) => lang == 'tm')?.title;
     }
     return text;
 }
